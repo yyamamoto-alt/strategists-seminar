@@ -5,1320 +5,465 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>戦略コンサル転職の教科書 | Strategists セミナー資料</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700;900&display=swap');
 
   :root {
-    --red: #C8102E;
-    --red-light: #E8354E;
-    --red-dark: #9B0C23;
-    --black: #0C0C0F;
-    --black-mid: #141417;
-    --black-soft: #1A1A1F;
-    --black-card: #1E1E24;
-    --white: #F5F3F0;
-    --white-dim: rgba(245,243,240,0.7);
-    --white-muted: rgba(245,243,240,0.45);
-    --white-faint: rgba(245,243,240,0.12);
-    --gray: #888;
-    --card-bg: rgba(255,255,255,0.035);
-    --card-border: rgba(255,255,255,0.07);
+    --red: #A62B17;
+    --red-light: #C4412A;
+    --black: #000000;
+    --dark: #1a1a1a;
+    --text: #222222;
+    --sub: #555555;
+    --gray: #888888;
+    --border: #e0e0e0;
+    --bg: #ffffff;
+    --bg-light: #f5f5f5;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html {
-    scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
-  }
-
+  html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
   body {
     font-family: 'Noto Sans JP', sans-serif;
-    background: var(--black);
-    color: var(--white);
+    background: var(--bg);
+    color: var(--text);
     line-height: 1.8;
     overflow-x: hidden;
   }
 
-  /* ===== SLIDE LAYOUT ===== */
   .slide {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 60px 80px;
-    position: relative;
-    scroll-snap-align: start;
-    overflow: hidden;
+    width: 100%; min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 48px 64px;
+    position: relative; scroll-snap-align: start; overflow: hidden;
+    background: var(--bg);
   }
 
-  /* ===== BACKGROUNDS ===== */
-  .bg-black { background: var(--black); }
-  .bg-mid { background: var(--black-mid); }
-  .bg-soft { background: var(--black-soft); }
-  .bg-grad-1 {
-    background: linear-gradient(160deg, var(--black) 0%, #111115 50%, var(--black-soft) 100%);
-  }
-  .bg-grad-2 {
-    background: linear-gradient(160deg, var(--black-mid) 0%, var(--black) 100%);
-  }
-  .bg-grad-red {
-    background: linear-gradient(160deg, var(--black) 0%, #1a0a0e 40%, var(--black) 100%);
-  }
+  .bg-white { background: var(--bg); }
+  .bg-light { background: var(--bg-light); }
+  .bg-dark { background: var(--dark); color: #fff; }
+  .bg-dark p { color: rgba(255,255,255,0.75); }
+  .bg-dark h2, .bg-dark h3, .bg-dark h4 { color: #fff; }
+  .bg-dark .slide-footer { color: rgba(255,255,255,0.25); border-top-color: rgba(255,255,255,0.1); }
+  .bg-hero { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); color: #fff; }
+  .bg-hero p { color: rgba(255,255,255,0.7); }
+  .bg-hero .slide-footer { color: rgba(255,255,255,0.25); border-top-color: rgba(255,255,255,0.1); }
 
-  /* ===== DECORATIVE ===== */
-  .deco {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0.04;
-  }
-  .deco.r1 { width: 700px; height: 700px; background: var(--red); top: -250px; right: -250px; }
-  .deco.r2 { width: 500px; height: 500px; background: var(--red); bottom: -200px; left: -200px; }
-  .deco.r3 { width: 350px; height: 350px; background: var(--white); top: 40%; right: -150px; }
-  .deco.w1 { width: 600px; height: 600px; background: var(--white); bottom: -300px; right: -200px; }
+  h1 { font-family: 'Noto Serif JP', serif; font-size: 52px; font-weight: 900; line-height: 1.3; color: var(--black); margin-bottom: 16px; }
+  .bg-hero h1, .bg-dark h1 { color: #fff; }
+  h2 { font-family: 'Noto Serif JP', serif; font-size: 40px; font-weight: 700; line-height: 1.35; color: var(--black); margin-bottom: 12px; }
+  h3 { font-family: 'Noto Serif JP', serif; font-size: 30px; font-weight: 700; line-height: 1.4; color: var(--black); margin-bottom: 10px; }
+  h4 { font-size: 20px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+  p { font-size: 18px; line-height: 1.9; color: var(--text); }
+  .sub { font-size: 16px; color: var(--sub); }
+  .small { font-size: 14px; color: var(--gray); }
+  .red { color: var(--red); }
+  strong { font-weight: 700; }
 
-  /* ===== TYPOGRAPHY ===== */
-  .slide-number {
-    position: absolute;
-    top: 30px;
-    right: 50px;
-    font-size: 13px;
-    color: rgba(255,255,255,0.15);
-    font-weight: 300;
-    letter-spacing: 3px;
-    font-family: 'Noto Serif JP', serif;
-  }
+  .red-bar { display: inline-block; width: 4px; min-height: 28px; background: var(--red); margin-right: 14px; flex-shrink: 0; }
+  .section-head { display: flex; align-items: stretch; margin-bottom: 16px; }
+  .section-label { font-size: 14px; font-weight: 700; letter-spacing: 3px; color: var(--red); margin-bottom: 6px; text-transform: uppercase; }
+  .divider { width: 48px; height: 3px; background: var(--red); margin: 16px 0; }
+  .logo { height: 36px; }
 
-  .chapter-label {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 16px;
-    padding: 7px 18px;
-    border: 1px solid rgba(200,16,46,0.35);
-    border-radius: 2px;
-  }
-
-  .section-label {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    color: var(--red-light);
-    margin-bottom: 12px;
-    text-transform: uppercase;
-  }
-
-  h1 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 24px;
-    color: var(--white);
-  }
-
-  h2 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(28px, 3.5vw, 48px);
-    font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 20px;
-    color: var(--white);
-  }
-
-  h3 {
-    font-size: clamp(20px, 2.5vw, 32px);
-    font-weight: 700;
-    line-height: 1.4;
-    margin-bottom: 16px;
-    color: var(--white);
-  }
-
-  h4 {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: var(--white);
-  }
-
-  .subtitle {
-    font-size: clamp(16px, 2vw, 22px);
-    color: var(--white-muted);
-    font-weight: 300;
-    line-height: 1.7;
-    max-width: 700px;
-  }
-
-  .highlight { color: var(--red); }
-  .red { color: var(--red-light); }
-
-  p {
-    font-size: 17px;
-    line-height: 2;
-    color: var(--white-dim);
-    max-width: 900px;
-  }
-
-  .lead {
-    font-size: 20px;
-    line-height: 2;
-    color: var(--white-muted);
-    max-width: 800px;
-  }
-
-  .big-number {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 72px;
-    font-weight: 900;
-    color: var(--red);
-    line-height: 1;
-  }
-
-  .big-quote {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(22px, 3vw, 34px);
-    font-weight: 400;
-    line-height: 1.8;
-    color: var(--white);
-    border-left: 3px solid var(--red);
-    padding-left: 28px;
-    margin: 30px 0;
-    max-width: 800px;
-  }
-
-  /* ===== DIVIDER ===== */
-  .divider {
-    width: 60px;
-    height: 3px;
-    background: var(--red);
-    margin: 20px 0;
-    border-radius: 0;
-  }
-
-  /* ===== GRID & CARDS ===== */
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; }
-  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 28px; }
-  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 28px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; margin-top: 24px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 24px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 24px; }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
 
-  .card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 4px;
-    padding: 28px;
-    transition: border-color 0.3s;
-  }
-  .card:hover { border-color: rgba(200,16,46,0.3); }
+  .card { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 24px; }
+  .card-red { border-left: 4px solid var(--red); }
+  .card-gray { background: var(--bg-light); border: none; }
+  .card p { font-size: 16px; line-height: 1.8; }
+  .card-number { font-family: 'Noto Serif JP', serif; font-size: 36px; font-weight: 900; color: var(--red); opacity: 0.3; line-height: 1; margin-bottom: 6px; }
 
-  .card-red { border-left: 3px solid var(--red); }
-  .card-white { border-left: 3px solid rgba(255,255,255,0.25); }
+  .list { list-style: none; padding: 0; }
+  .list li { padding: 8px 0 8px 24px; position: relative; font-size: 18px; color: var(--text); line-height: 1.8; }
+  .list li::before { content: ''; position: absolute; left: 0; top: 17px; width: 8px; height: 2px; background: var(--red); }
+  .list-sm li { font-size: 16px; }
+  .list-sm li::before { top: 14px; }
 
-  .card-number {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 32px;
-    font-weight: 900;
-    color: var(--red);
-    opacity: 0.35;
-    margin-bottom: 6px;
-  }
+  .flow { display: flex; align-items: stretch; gap: 12px; margin-top: 20px; }
+  .flow-step { flex: 1; background: var(--bg-light); border-radius: 4px; padding: 20px 16px; text-align: center; border-top: 3px solid var(--red); }
+  .flow-step h4 { font-size: 15px; margin-bottom: 4px; }
+  .flow-step p { font-size: 13px; color: var(--sub); }
+  .flow-arrow { display: flex; align-items: center; font-size: 20px; color: var(--red); flex-shrink: 0; }
 
-  .card p {
-    font-size: 15px;
-    line-height: 1.8;
-    color: var(--white-dim);
-  }
+  .timeline { position: relative; padding-left: 28px; margin-top: 20px; }
+  .timeline::before { content: ''; position: absolute; left: 6px; top: 4px; bottom: 4px; width: 2px; background: var(--red); opacity: 0.3; }
+  .tl-item { position: relative; margin-bottom: 22px; padding-left: 16px; }
+  .tl-item::before { content: ''; position: absolute; left: -26px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--red); }
+  .tl-label { font-size: 13px; font-weight: 700; color: var(--red); letter-spacing: 2px; }
+  .tl-title { font-size: 19px; font-weight: 700; color: var(--black); margin: 2px 0 4px; }
+  .tl-desc { font-size: 15px; color: var(--sub); }
 
-  /* ===== LISTS ===== */
-  .check-list { list-style: none; padding: 0; }
-  .check-list li {
-    padding: 8px 0 8px 30px;
-    position: relative;
-    font-size: 16px;
-    color: var(--white-dim);
-    line-height: 1.7;
-  }
-  .check-list li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--red);
-    font-weight: 700;
-  }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 14px; border-radius: 4px; overflow: hidden; }
+  .compare-x { background: #fef2f2; padding: 18px 20px; border: 1px solid #fca5a5; }
+  .compare-o { background: #f0fdf4; padding: 18px 20px; border: 1px solid #86efac; }
+  .compare-label { font-size: 12px; font-weight: 700; margin-bottom: 6px; }
+  .compare-x .compare-label { color: #dc2626; }
+  .compare-o .compare-label { color: #16a34a; }
+  .compare p { font-size: 15px; }
 
-  /* ===== BADGE ===== */
-  .badge {
-    display: inline-block;
-    padding: 3px 12px;
-    border-radius: 2px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
-  }
-  .badge-red { background: rgba(200,16,46,0.15); color: var(--red-light); }
-  .badge-white { background: rgba(255,255,255,0.08); color: var(--white-dim); }
+  .progress { display: flex; gap: 3px; margin: 14px 0; max-width: 700px; }
+  .progress .seg { height: 6px; flex: 1; border-radius: 1px; }
+  .seg-1 { background: var(--red); }
+  .seg-2 { background: var(--red-light); }
+  .seg-3 { background: var(--border); }
 
-  /* ===== STEP FLOW ===== */
-  .step-flow { display: flex; align-items: stretch; gap: 14px; margin-top: 28px; }
-  .step-flow .step {
-    flex: 1;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 4px;
-    padding: 22px 16px;
-    text-align: center;
-    position: relative;
-  }
-  .step-flow .step::after {
-    content: '→';
-    position: absolute;
-    right: -14px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-    color: var(--red);
-    z-index: 1;
-  }
-  .step-flow .step:last-child::after { display: none; }
-  .step-icon { font-size: 28px; margin-bottom: 10px; }
+  .tag { display: inline-block; padding: 4px 12px; font-size: 13px; font-weight: 700; border-radius: 2px; margin-right: 6px; margin-bottom: 4px; }
+  .tag-red { background: rgba(166,43,23,0.08); color: var(--red); border: 1px solid rgba(166,43,23,0.2); }
+  .tag-gray { background: var(--bg-light); color: var(--sub); border: 1px solid var(--border); }
 
-  /* ===== TIMELINE ===== */
-  .timeline { position: relative; padding-left: 36px; margin-top: 24px; }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 10px; top: 0; bottom: 0;
-    width: 1px;
-    background: linear-gradient(180deg, var(--red), rgba(200,16,46,0.2));
-  }
-  .timeline-item { position: relative; margin-bottom: 28px; padding-left: 18px; }
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -30px; top: 8px;
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: var(--red);
-    border: 2px solid var(--black);
-  }
-  .timeline-label { font-size: 12px; font-weight: 700; color: var(--red); letter-spacing: 2px; margin-bottom: 3px; }
-  .timeline-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; color: var(--white); }
-  .timeline-desc { font-size: 14px; color: var(--white-muted); line-height: 1.8; }
+  .box-red { background: rgba(166,43,23,0.04); border: 1px solid rgba(166,43,23,0.15); border-radius: 4px; padding: 18px 22px; margin-top: 14px; }
+  .box-gray { background: var(--bg-light); border: 1px solid var(--border); border-radius: 4px; padding: 18px 22px; margin-top: 14px; }
 
-  /* ===== PROGRESS BAR ===== */
-  .progress-bar { display: flex; gap: 3px; margin: 20px 0; }
-  .progress-bar .seg { height: 4px; border-radius: 0; flex: 1; }
-  .seg.s1 { background: var(--red); }
-  .seg.s2 { background: var(--red-light); }
-  .seg.s3 { background: rgba(255,255,255,0.2); }
+  .quote { font-family: 'Noto Serif JP', serif; font-size: 26px; font-weight: 600; line-height: 1.8; color: var(--black); border-left: 4px solid var(--red); padding-left: 24px; margin: 20px 0; }
+  .bg-dark .quote { color: #fff; }
 
-  /* ===== COMPARE ===== */
-  .compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 16px; overflow: hidden; }
-  .compare-bad { background: rgba(200,16,46,0.06); border: 1px solid rgba(200,16,46,0.2); padding: 20px; }
-  .compare-good { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.15); padding: 20px; }
-  .compare-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; margin-bottom: 10px; }
-  .compare-bad .compare-label { color: var(--red); }
-  .compare-good .compare-label { color: var(--white); }
+  .big-num { font-family: 'Noto Serif JP', serif; font-size: 64px; font-weight: 900; color: var(--red); line-height: 1; }
 
-  /* ===== BOXES ===== */
-  .point-box {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 4px;
-    padding: 22px 26px;
-    margin-top: 18px;
-  }
-  .warn-box {
-    background: rgba(200,16,46,0.06);
-    border: 1px solid rgba(200,16,46,0.2);
-    border-radius: 4px;
-    padding: 22px 26px;
-    margin-top: 18px;
-  }
+  .slide-footer { position: absolute; bottom: 16px; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--gray); letter-spacing: 1px; border-top: 1px solid var(--border); padding-top: 10px; }
 
-  /* ===== ICON BOX ===== */
-  .icon-box {
-    width: 48px; height: 48px;
-    border-radius: 4px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    margin-bottom: 14px;
-  }
-  .icon-box.red { background: rgba(200,16,46,0.12); }
-  .icon-box.wh { background: rgba(255,255,255,0.06); }
-
-  /* ===== TAG ===== */
-  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .tag {
-    padding: 5px 14px; border-radius: 2px; font-size: 13px; font-weight: 500;
-    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--white-dim);
-  }
-  .tag.red-border { border-color: rgba(200,16,46,0.4); color: var(--red-light); }
-
-  /* ===== FOOTER ===== */
-  .slide-footer {
-    position: absolute;
-    bottom: 24px; left: 80px; right: 80px;
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 11px; color: rgba(255,255,255,0.15); letter-spacing: 1px;
-  }
-
-  /* ===== NAV ===== */
-  .nav-sidebar {
-    position: fixed; right: 18px; top: 50%; transform: translateY(-50%);
-    z-index: 100; display: flex; flex-direction: column; gap: 6px;
-  }
-  .nav-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: rgba(255,255,255,0.12); cursor: pointer;
-    transition: all 0.3s; border: none;
-  }
+  .nav-side { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 5px; }
+  .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(0,0,0,0.15); cursor: pointer; transition: all 0.3s; border: none; }
   .nav-dot:hover, .nav-dot.active { background: var(--red); transform: scale(1.4); }
 
-  /* ===== PRINT ===== */
-  @media print {
-    .slide { page-break-after: always; min-height: 100vh; }
-    .nav-sidebar { display: none; }
-    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 768px) {
-    .slide { padding: 40px 24px; }
-    .grid-2, .grid-3, .grid-4, .two-col { grid-template-columns: 1fr; }
-    .step-flow { flex-direction: column; }
-    .step-flow .step::after { display: none; }
-    .compare-table { grid-template-columns: 1fr; }
-    .nav-sidebar { display: none; }
+  @media (max-width: 900px) {
+    .slide { padding: 32px 24px; }
+    .grid-2, .grid-3, .grid-4, .grid-5, .two-col { grid-template-columns: 1fr; }
+    .flow { flex-direction: column; }
+    .flow-arrow { display: none; }
+    .compare { grid-template-columns: 1fr; }
+    .nav-side { display: none; }
     .slide-footer { left: 24px; right: 24px; }
-    .slide-number { right: 24px; }
+    h1 { font-size: 36px; } h2 { font-size: 30px; } h3 { font-size: 24px; }
+  }
+  @media print {
+    .slide { page-break-after: always; }
+    .nav-side { display: none; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
 </style>
 </head>
 <body>
+<nav class="nav-side" id="nav"></nav>
 
-<!-- NAV -->
-<nav class="nav-sidebar" id="navDots"></nav>
-
-<!-- ====== SLIDE 1: TITLE ====== -->
-<section class="slide bg-grad-1" id="s1">
-  <div class="deco r1"></div>
-  <div class="deco r2"></div>
-  <span class="slide-number">01</span>
-  <div style="max-width:880px;">
-    <div class="chapter-label">STRATEGISTS SEMINAR</div>
-    <h1 style="margin-bottom:28px;">
-      戦略コンサル転職の<br><span class="highlight">教科書</span>
-    </h1>
-    <div class="divider"></div>
-    <p class="subtitle" style="margin-top:20px;">選考対策・準備の全体像を完全解説</p>
-    <div style="margin-top:48px; display:flex; gap:14px; align-items:center;">
-      <span class="badge badge-red">ケース面接対策塾</span>
-      <span style="color:rgba(255,255,255,0.15);">|</span>
-      <span style="font-size:13px; color:rgba(255,255,255,0.3);">Presented by Strategists</span>
-    </div>
+<!-- S1: TITLE -->
+<section class="slide bg-hero" id="s1">
+  <div style="max-width:850px;">
+    <img src="logo.png" class="logo" alt="Strategists" style="margin-bottom:40px; filter: brightness(0) invert(1);">
+    <h1 style="font-size:56px; margin-bottom:20px;">戦略コンサル転職の<br>教科書</h1>
+    <div class="divider" style="background:#fff; opacity:0.3;"></div>
+    <p style="font-size:22px; margin-top:16px; color:rgba(255,255,255,0.6);">選考対策・準備の全体像を完全解説</p>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>CONFIDENTIAL</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists / Top Tier Inc.</span><span>CONFIDENTIAL</span></div>
 </section>
 
-<!-- ====== SLIDE 2: AGENDA ====== -->
-<section class="slide bg-grad-2" id="s2">
-  <span class="slide-number">02</span>
-  <div class="section-label">AGENDA</div>
-  <h2>本日のアジェンダ</h2>
-  <div class="divider"></div>
-  <div class="grid-2" style="margin-top:36px; max-width:960px;">
-    <div class="card card-red" style="display:flex; gap:18px; align-items:flex-start;">
-      <div class="card-number">01</div>
-      <div>
-        <h4>戦略コンサルの「リアル」</h4>
-        <p>仕事内容・魅力と覚悟・職位・キャリアパス</p>
-      </div>
-    </div>
-    <div class="card card-red" style="display:flex; gap:18px; align-items:flex-start;">
-      <div class="card-number">02</div>
-      <div>
-        <h4>下準備</h4>
-        <p>スケジュール・勘違い・原体験・職務経歴書・ビヘイビア面接</p>
-      </div>
-    </div>
-    <div class="card card-red" style="display:flex; gap:18px; align-items:flex-start;">
-      <div class="card-number">03</div>
-      <div>
-        <h4>ケース面接の正体</h4>
-        <p>評価項目・間違った学習法・正しい学習ステップ</p>
-      </div>
-    </div>
-    <div class="card card-red" style="display:flex; gap:18px; align-items:flex-start;">
-      <div class="card-number">04</div>
-      <div>
-        <h4>エージェント活用 & 応募戦略</h4>
-        <p>良いエージェントの見極め方・応募の量と順番</p>
-      </div>
-    </div>
+<!-- S2: AGENDA -->
+<section class="slide bg-white" id="s2">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">Agenda</div><h2>本日のアジェンダ</h2></div></div>
+  <div class="grid-2" style="margin-top:32px; max-width:960px;">
+    <div class="card card-red"><div class="card-number">01</div><h4>戦略コンサルの「リアル」</h4><p>仕事内容・魅力と覚悟・職位・キャリアパス</p></div>
+    <div class="card card-red"><div class="card-number">02</div><h4>下準備</h4><p>スケジュール・勘違い・原体験・職務経歴書・ビヘイビア面接</p></div>
+    <div class="card card-red"><div class="card-number">03</div><h4>ケース面接の正体</h4><p>評価項目・間違った学習法・正しい学習ステップ</p></div>
+    <div class="card card-red"><div class="card-number">04</div><h4>エージェント活用 & 応募戦略</h4><p>良いエージェントの見極め方・応募の量と順番</p></div>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>CONFIDENTIAL</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span></span></div>
 </section>
 
-<!-- ====== CHAPTER 1 COVER ====== -->
-<section class="slide bg-grad-red" id="s3">
-  <div class="deco r3"></div>
-  <span class="slide-number">03</span>
-  <div style="display:flex; align-items:center; gap:24px; margin-bottom:20px;">
-    <span class="big-number">01</span>
-    <div>
-      <div class="chapter-label">CHAPTER 1</div>
-      <h2 style="margin-bottom:0;">戦略コンサルの<br>「リアル」を知る</h2>
-    </div>
-  </div>
-  <div class="divider"></div>
-  <p class="lead">華やかなイメージの裏にある、本当の仕事・魅力・覚悟</p>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 1</span>
-  </div>
+<!-- S3: CH1 COVER -->
+<section class="slide bg-dark" id="s3">
+  <div style="display:flex; align-items:center; gap:28px;"><span class="big-num" style="font-size:80px; opacity:0.3;">01</span><div><div class="section-label">Chapter 1</div><h2 style="color:#fff;">戦略コンサルの「リアル」を知る</h2></div></div>
+  <div class="divider" style="margin-top:20px;"></div>
+  <p style="color:rgba(255,255,255,0.5); font-size:20px; margin-top:12px;">華やかなイメージの裏にある、本当の仕事・魅力・覚悟</p>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 1</span></div>
 </section>
 
-<!-- ====== SLIDE 4: What is it ====== -->
-<section class="slide bg-mid" id="s4">
-  <span class="slide-number">04</span>
-  <div class="section-label">1-1 仕事内容</div>
-  <h3>戦略コンサルとは<span class="highlight">何をする仕事</span>か？</h3>
-  <div class="divider"></div>
-  <p style="margin-bottom:22px;">企業の経営課題を解決するパートナー。社長・役員から経営の最重要課題を受け取り、数名のチームで数ヶ月間、クライアント企業に入り込む。</p>
-  <div class="step-flow">
-    <div class="step">
-      <div class="step-icon">🔍</div>
-      <h4 style="font-size:14px;">徹底的な現状分析</h4>
-      <p style="font-size:12px;">インタビュー・市場リサーチ・データ分析</p>
-    </div>
-    <div class="step">
-      <div class="step-icon">🎯</div>
-      <h4 style="font-size:14px;">課題の本質特定</h4>
-      <p style="font-size:12px;">なぜそうなっているか仮説を立てる</p>
-    </div>
-    <div class="step">
-      <div class="step-icon">💬</div>
-      <h4 style="font-size:14px;">仮説立案・議論</h4>
-      <p style="font-size:12px;">チーム・クライアントと深い議論</p>
-    </div>
-    <div class="step">
-      <div class="step-icon">📊</div>
-      <h4 style="font-size:14px;">分析・ロジック構築</h4>
-      <p style="font-size:12px;">Excel・PowerPointで詰め込む</p>
-    </div>
-    <div class="step">
-      <div class="step-icon">🚀</div>
-      <h4 style="font-size:14px;">戦略提言・実行支援</h4>
-      <p style="font-size:12px;">最終的な提案とフォロー</p>
-    </div>
+<!-- S4: What is it -->
+<section class="slide bg-white" id="s4">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">1-1</div><h3>戦略コンサルとは何をする仕事か？</h3></div></div>
+  <p style="margin-bottom:20px;">企業の経営課題を解決するパートナー。社長・役員から経営の最重要課題を受け取り、数名のチームで数ヶ月間、クライアント企業に入り込む。</p>
+  <div class="flow">
+    <div class="flow-step"><h4>徹底的な現状分析</h4><p>インタビュー・市場リサーチ・データ分析</p></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><h4>課題の本質特定</h4><p>なぜそうなっているか仮説を立てる</p></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><h4>仮説立案・議論</h4><p>チーム・クライアントと深い議論</p></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><h4>分析・ロジック構築</h4><p>Excel・PowerPointで詰め込む</p></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><h4>戦略提言・実行支援</h4><p>最終的な提案とフォロー</p></div>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 1</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 1</span></div>
 </section>
 
-<!-- ====== SLIDE 5: Attraction & Resolve ====== -->
-<section class="slide bg-grad-2" id="s5">
-  <span class="slide-number">05</span>
-  <div class="section-label">1-2 魅力と覚悟</div>
-  <h3>働く上での魅力と<span class="highlight">覚悟</span></h3>
-  <div class="divider"></div>
-  <div class="two-col" style="margin-top:28px;">
-    <div>
-      <div class="icon-box wh">✦</div>
-      <h4>魅力</h4>
-      <ul class="check-list">
-        <li><strong>圧倒的な成長スピード</strong> — 他業界の数年分に匹敵</li>
-        <li><strong>高い報酬</strong> — 業界トップクラスの事実</li>
-        <li>20代〜30代前半で<strong>マネジメント経験</strong></li>
-        <li>優秀な同僚・経営トップとの<strong>知的刺激</strong></li>
-        <li>数ヶ月単位で<strong>全く異なる業界</strong>に挑戦</li>
-      </ul>
-    </div>
-    <div>
-      <div class="icon-box red">⚡</div>
-      <h4 style="color:var(--red-light);">必要な覚悟</h4>
-      <ul class="check-list">
-        <li>相手はその道何十年の<strong>経営層</strong></li>
-        <li>唯一の武器は「<strong>考え抜いた論理とコミュニケーション</strong>」</li>
-        <li>アウトプットの質は<strong>常に異常に高い</strong>基準</li>
-        <li>「なぜ？」に<strong>ロジックだけで戦い抜く</strong></li>
-        <li>「なんとなく」は<strong>何の価値も持たない</strong></li>
-      </ul>
-    </div>
+<!-- S5: Attraction & Resolve -->
+<section class="slide bg-light" id="s5">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">1-2</div><h3>働く上での魅力と覚悟</h3></div></div>
+  <div class="two-col" style="margin-top:24px;">
+    <div><h4 style="margin-bottom:12px;">魅力</h4><ul class="list"><li><strong>圧倒的な成長スピード</strong> ― 他業界の数年分に匹敵</li><li><strong>高い報酬</strong> ― 業界トップクラスの事実</li><li>20代〜30代前半で<strong>マネジメント経験</strong></li><li>優秀な同僚・経営トップとの<strong>知的刺激</strong></li><li>数ヶ月単位で<strong>全く異なる業界</strong>に挑戦</li></ul></div>
+    <div><h4 style="margin-bottom:12px; color:var(--red);">必要な覚悟</h4><ul class="list"><li>相手はその道何十年の<strong>経営層</strong></li><li>唯一の武器は「<strong>考え抜いた論理とコミュニケーション</strong>」</li><li>アウトプットの質は<strong>常に異常に高い</strong>基準</li><li>「なぜ？」に<strong>ロジックだけで戦い抜く</strong></li><li>「なんとなく」は<strong>何の価値も持たない</strong></li></ul></div>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 1</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 1</span></div>
 </section>
 
-<!-- ====== SLIDE 6: Positions ====== -->
-<section class="slide bg-mid" id="s6">
-  <span class="slide-number">06</span>
-  <div class="section-label">1-3 職位と裁量</div>
-  <h3>戦略コンサルの<span class="highlight">4つの職位</span></h3>
-  <div class="divider"></div>
-  <div class="grid-4" style="margin-top:24px;">
-    <div class="card" style="border-top:3px solid var(--red);">
-      <div class="badge badge-red" style="margin-bottom:10px;">転職後すぐ</div>
-      <h4 style="font-size:20px;">① アナリスト</h4>
-      <p>論点の一部に責任を持ち、インタビュー・リサーチ・データ分析を回す。データから示唆を抽出。</p>
-    </div>
-    <div class="card" style="border-top:3px solid var(--red-light);">
-      <div class="badge badge-red" style="margin-bottom:10px;">3〜5年目安</div>
-      <h4 style="font-size:20px;">② コンサルタント</h4>
-      <p>ジュニアを指導。未知の領域もキャッチアップし、パッションを見つけ新たな挑戦へ。</p>
-    </div>
-    <div class="card" style="border-top:3px solid rgba(255,255,255,0.3);">
-      <div class="badge badge-white" style="margin-bottom:10px;">5〜8年目安</div>
-      <h4 style="font-size:20px;">③ マネージャー</h4>
-      <p>5〜10名のプロジェクトをリード。クライアントコミュニケーションのメイン窓口。</p>
-    </div>
-    <div class="card" style="border-top:3px solid rgba(255,255,255,0.5);">
-      <div class="badge badge-white" style="margin-bottom:10px;">8年目安〜</div>
-      <h4 style="font-size:20px;">④ パートナー</h4>
-      <p>プロジェクトを超えて経営を支援。困った時に最初に電話する相手。経営者のブレイン。</p>
-    </div>
+<!-- S6: Positions -->
+<section class="slide bg-white" id="s6">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">1-3</div><h3>戦略コンサルの4つの職位</h3></div></div>
+  <div class="grid-4" style="margin-top:20px;">
+    <div class="card" style="border-top:3px solid var(--red);"><span class="tag tag-red">転職後すぐ</span><h4 style="margin-top:10px; font-size:22px;">アナリスト</h4><p>論点の一部に責任を持ち、インタビュー・リサーチ・データ分析を回す。</p></div>
+    <div class="card" style="border-top:3px solid var(--red-light);"><span class="tag tag-red">3〜5年目安</span><h4 style="margin-top:10px; font-size:22px;">コンサルタント</h4><p>ジュニアを指導。未知の領域もキャッチアップし、新たな挑戦へ。</p></div>
+    <div class="card" style="border-top:3px solid var(--dark);"><span class="tag tag-gray">5〜8年目安</span><h4 style="margin-top:10px; font-size:22px;">マネージャー</h4><p>5〜10名のプロジェクトをリード。クライアント窓口。</p></div>
+    <div class="card" style="border-top:3px solid var(--black);"><span class="tag tag-gray">8年目安〜</span><h4 style="margin-top:10px; font-size:22px;">パートナー</h4><p>経営を支援。困った時に最初に電話する相手。</p></div>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 1</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 1</span></div>
 </section>
 
-<!-- ====== SLIDE 7: 3 Gaps ====== -->
-<section class="slide bg-grad-red" id="s7">
-  <span class="slide-number">07</span>
-  <div class="section-label">1-4 理想と現実のギャップ</div>
-  <h3>転職者が抱きがちな<span class="highlight">3つのギャップ</span></h3>
-  <div class="divider"></div>
+<!-- S7: 3 Gaps -->
+<section class="slide bg-white" id="s7">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">1-4</div><h3>転職者が抱きがちな3つのギャップ</h3></div></div>
   <div class="grid-3" style="margin-top:20px;">
-    <div class="card card-red">
-      <div class="card-number">01</div>
-      <h4 style="color:var(--red-light); font-size:16px;">天才的なひらめき<br><small style="color:var(--white-muted);">→ 99%の泥臭い作業</small></h4>
-      <p>500ページの業界レポートを読み漁り、夜通しExcel分析。<strong>誰よりも手を動かす作業者</strong>。</p>
-    </div>
-    <div class="card card-red">
-      <div class="card-number">02</div>
-      <h4 style="color:var(--red-light); font-size:16px;">万能なフレームワーク<br><small style="color:var(--white-muted);">→ 地道な論点設計</small></h4>
-      <p>3CやSWOTで全て解決は<strong>初心者の罠</strong>。本当の仕事は「正しい問いを立てる」論点設計。</p>
-    </div>
-    <div class="card card-red">
-      <div class="card-number">03</div>
-      <h4 style="color:var(--red-light); font-size:16px;">華やかな世界<br><small style="color:var(--white-muted);">→ 地道な現場</small></h4>
-      <p>実際の職場は工場の片隅。チームと缶詰めで、<strong>コンビニ飯を食べながら深夜まで議論</strong>。</p>
-    </div>
+    <div class="card card-red"><div class="card-number">01</div><h4>天才的なひらめき</h4><p style="color:var(--red); font-size:14px; margin-bottom:8px;">→ 99%の泥臭い作業</p><p>500ページの業界レポートを読み漁り、夜通しExcel分析。<strong>誰よりも手を動かす作業者</strong>。</p></div>
+    <div class="card card-red"><div class="card-number">02</div><h4>万能なフレームワーク</h4><p style="color:var(--red); font-size:14px; margin-bottom:8px;">→ 地道な論点設計</p><p>3CやSWOTで全て解決は<strong>初心者の罠</strong>。本当の仕事は「正しい問いを立てる」論点設計。</p></div>
+    <div class="card card-red"><div class="card-number">03</div><h4>華やかな世界</h4><p style="color:var(--red); font-size:14px; margin-bottom:8px;">→ 地道な現場</p><p>実際の職場は工場の片隅。チームと缶詰めで、<strong>コンビニ飯を食べながら深夜まで議論</strong>。</p></div>
   </div>
-  <div class="big-quote" style="margin-top:32px;">
-    「答えを出す前の『正しい問いを立てる』作業」こそが<br>戦略コンサルの仕事の本質
-  </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 1</span>
-  </div>
+  <div class="quote" style="margin-top:28px;">「答えを出す前の『正しい問いを立てる』作業」こそが戦略コンサルの仕事の本質</div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 1</span></div>
 </section>
 
-<!-- ====== SLIDE 8: Career paths ====== -->
-<section class="slide bg-mid" id="s8">
-  <span class="slide-number">08</span>
-  <div class="section-label">1-5 コンサル後のキャリアパス</div>
-  <h3>コンサル経験が開く<span class="highlight">5つのキャリア</span></h3>
-  <div class="divider"></div>
-  <p style="margin-bottom:20px;">「どんな複雑な問題でも構造化して仮説検証で解決策を導き出せる」<strong>一生使える汎用スキル</strong>。</p>
-  <div class="grid-3" style="max-width:1100px;">
-    <div class="card" style="border-top:2px solid var(--red);">
-      <h4 style="font-size:16px;">① コンサル内昇進・転職</h4>
-      <p>パートナーを目指す、または他ファームへ</p>
-    </div>
-    <div class="card" style="border-top:2px solid var(--red);">
-      <h4 style="font-size:16px;">② 投資ファンド</h4>
-      <p>PE・VCでの企業価値分析・経営改善</p>
-    </div>
-    <div class="card" style="border-top:2px solid var(--red);">
-      <h4 style="font-size:16px;">③ 事業会社 <span class="badge badge-red">最も王道</span></h4>
-      <p>経営企画・新規事業担当として戦略を実行する側へ</p>
-    </div>
-    <div class="card" style="border-top:2px solid rgba(255,255,255,0.2);">
-      <h4 style="font-size:16px;">④ スタートアップCXO</h4>
-      <p>COO・CSOとして事業の急成長をドライブ</p>
-    </div>
-    <div class="card" style="border-top:2px solid rgba(255,255,255,0.2);">
-      <h4 style="font-size:16px;">⑤ 起業</h4>
-      <p>成功・失敗事例の分析経験を活かして自ら事業を立ち上げる</p>
-    </div>
+<!-- S8: Career paths -->
+<section class="slide bg-light" id="s8">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">1-5</div><h3>コンサル経験が開く5つのキャリア</h3></div></div>
+  <p style="margin-bottom:16px;">「どんな複雑な問題でも構造化して仮説検証で解決策を導き出せる」<strong>一生使える汎用スキル</strong>。</p>
+  <div class="grid-5">
+    <div class="card" style="border-top:3px solid var(--red); text-align:center; padding:20px 16px;"><h4 style="font-size:16px;">コンサル内<br>昇進・転職</h4></div>
+    <div class="card" style="border-top:3px solid var(--red); text-align:center; padding:20px 16px;"><h4 style="font-size:16px;">投資ファンド<br><span class="small">PE / VC</span></h4></div>
+    <div class="card" style="border-top:3px solid var(--red); text-align:center; padding:20px 16px;"><h4 style="font-size:16px;">事業会社<br><span class="tag tag-red" style="font-size:11px;">最も王道</span></h4></div>
+    <div class="card" style="border-top:3px solid var(--dark); text-align:center; padding:20px 16px;"><h4 style="font-size:16px;">スタートアップ<br>CXO</h4></div>
+    <div class="card" style="border-top:3px solid var(--dark); text-align:center; padding:20px 16px;"><h4 style="font-size:16px;">起業</h4></div>
   </div>
-  <div class="point-box" style="max-width:800px; margin-top:20px;">
-    <p style="font-size:16px;">「出る」も「残る」も<strong>高いレベルで自分の意志で選べる</strong>ようになる — それが最大の利点</p>
-  </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 1</span>
-  </div>
+  <div class="box-gray" style="max-width:760px; margin-top:20px;"><p style="font-size:17px;">「出る」も「残る」も<strong>高いレベルで自分の意志で選べる</strong>ようになる ― それが最大の利点</p></div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 1</span></div>
 </section>
 
-<!-- ====== CHAPTER 2 COVER ====== -->
-<section class="slide bg-grad-1" id="s9">
-  <div class="deco r1"></div>
-  <span class="slide-number">09</span>
-  <div style="display:flex; align-items:center; gap:24px; margin-bottom:20px;">
-    <span class="big-number">02</span>
-    <div>
-      <div class="chapter-label">CHAPTER 2</div>
-      <h2 style="margin-bottom:0;">まずはここから<br>下準備</h2>
-    </div>
-  </div>
-  <div class="divider"></div>
-  <p class="lead">全ての土台となるスケジュール・原体験・職務経歴書・ビヘイビア面接</p>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 2</span>
-  </div>
+<!-- S9: CH2 COVER -->
+<section class="slide bg-dark" id="s9">
+  <div style="display:flex; align-items:center; gap:28px;"><span class="big-num" style="font-size:80px; opacity:0.3;">02</span><div><div class="section-label">Chapter 2</div><h2 style="color:#fff;">まずはここから、下準備</h2></div></div>
+  <div class="divider" style="margin-top:20px;"></div>
+  <p style="color:rgba(255,255,255,0.5); font-size:20px; margin-top:12px;">全ての土台となるスケジュール・原体験・職務経歴書・ビヘイビア面接</p>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 2</span></div>
 </section>
 
-<!-- ====== SLIDE 10: Schedule ====== -->
-<section class="slide bg-mid" id="s10">
-  <span class="slide-number">10</span>
-  <div class="section-label">2-1 スケジュール</div>
-  <h3>転職活動全体の<span class="highlight">スケジュール感</span></h3>
-  <div class="divider"></div>
-  <p style="margin-bottom:6px;">準備開始から入社まで<strong class="highlight" style="font-size:22px;">5〜6ヶ月</strong>を推奨</p>
-  <div class="progress-bar" style="max-width:800px;">
-    <div class="seg s1" style="flex:2;"></div>
-    <div class="seg s2" style="flex:3;"></div>
-    <div class="seg s3" style="flex:2;"></div>
+<!-- S10: Schedule -->
+<section class="slide bg-white" id="s10">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">2-1</div><h3>転職活動全体のスケジュール感</h3></div></div>
+  <p>準備開始から入社まで <strong class="red" style="font-size:28px;">5〜6ヶ月</strong> を推奨</p>
+  <div class="progress" style="margin:10px 0 20px;"><div class="seg seg-1" style="flex:2;"></div><div class="seg seg-2" style="flex:3;"></div><div class="seg seg-3" style="flex:2;"></div></div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-label">PHASE 1 ― 準備期（〜5ヶ月前）</div><div class="tl-title">自己分析・情報収集・書類初稿・基礎インプット</div><div class="tl-desc">なぜコンサルか、なぜ今か。エージェント接触。ケース面接・フェルミ推定の入門書でインプット。</div></div>
+    <div class="tl-item"><div class="tl-label">PHASE 2 ― 対策集中期（5ヶ月前〜1ヶ月前）</div><div class="tl-title">ケース・ビヘイビア対策本格化・書類完成・応募戦略策定</div><div class="tl-desc">筆記・模擬面接を繰り返し、思考体力と伝える力を鍛える。ファームの順番・タイミングを確定。</div></div>
+    <div class="tl-item"><div class="tl-label">PHASE 3 ― 選考本番期（応募〜内定〜入社）</div><div class="tl-title">書類応募・面接・振り返り・内定・意思決定</div><div class="tl-desc">1社あたり1〜2ヶ月。一社一社の振り返りがオファー獲得のコツ。</div></div>
   </div>
-  <div style="display:flex; gap:8px; max-width:800px; font-size:11px; color:rgba(255,255,255,0.3); margin-bottom:20px;">
-    <span style="flex:2;">準備期</span>
-    <span style="flex:3;">対策集中期</span>
-    <span style="flex:2;">選考本番期</span>
-  </div>
-  <div class="timeline" style="max-width:780px;">
-    <div class="timeline-item">
-      <div class="timeline-label">PHASE 1 — 準備期（〜5ヶ月前）</div>
-      <div class="timeline-title">自己分析・情報収集・書類初稿・基礎インプット</div>
-      <div class="timeline-desc">なぜコンサルか、なぜ今か。エージェント接触。ケース面接・フェルミ推定の入門書でインプット。</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-label">PHASE 2 — 対策集中期（5ヶ月前〜1ヶ月前）</div>
-      <div class="timeline-title">ケース・ビヘイビア対策本格化・書類完成・応募戦略策定</div>
-      <div class="timeline-desc">筆記・模擬面接を繰り返し、思考体力と伝える力を鍛える。ファームの順番・タイミングを確定。</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-label">PHASE 3 — 選考本番期（応募〜内定〜入社）</div>
-      <div class="timeline-title">書類応募・面接・振り返り・内定・意思決定</div>
-      <div class="timeline-desc">1社あたり1〜2ヶ月。一社一社の振り返りがオファー獲得のコツ。</div>
-    </div>
-  </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 2</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 2</span></div>
 </section>
 
-<!-- ====== SLIDE 11: 6 Misconceptions ====== -->
-<section class="slide bg-grad-2" id="s11">
-  <span class="slide-number">11</span>
-  <div class="section-label">2-2 よくある勘違い</div>
-  <h3>多くの人が陥る<span class="highlight">6つの「勘違い」</span></h3>
-  <div class="divider"></div>
-  <div class="grid-3" style="margin-top:18px;">
-    <div class="card card-red">
-      <div class="card-number">01</div>
-      <h4 style="font-size:14px; color:var(--red-light);">とりあえずケース対策から始めればいい</h4>
-      <p>人物面の対策も同様に重要。強固な志望動機と職務経歴書が先。</p>
-    </div>
-    <div class="card card-red">
-      <div class="card-number">02</div>
-      <h4 style="font-size:14px; color:var(--red-light);">地頭さえ良ければ受かる</h4>
-      <p>思考力は前提条件。その上で「マチュアさ」「チャーム」が必要。</p>
-    </div>
-    <div class="card card-red">
-      <div class="card-number">03</div>
-      <h4 style="font-size:14px; color:var(--red-light);">エージェントにお任せで大丈夫</h4>
-      <p>「主体的に使いこなす」もの。主役はあなた自身。</p>
-    </div>
-    <div class="card card-red">
-      <div class="card-number">04</div>
-      <h4 style="font-size:14px; color:var(--red-light);">関係ない経験はアピールにならない</h4>
-      <p>「どう考え、どう乗り越えたか」が重要。ユニーク経験こそ差別化要因。</p>
-    </div>
-    <div class="card card-red">
-      <div class="card-number">05</div>
-      <h4 style="font-size:14px; color:var(--red-light);">リファラルの方が通過率が高い</h4>
-      <p>面接官は「思考力」「カルチャーフィット」のみを見ている。</p>
-    </div>
-    <div class="card card-red">
-      <div class="card-number">06</div>
-      <h4 style="font-size:14px; color:var(--red-light);">大手に入れれば入れるほど良い</h4>
-      <p>プロジェクトの働き方は大小で変わらない。テーマの幅と人の多さの違い。</p>
-    </div>
+<!-- S11: 6 Misconceptions -->
+<section class="slide bg-light" id="s11">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">2-2</div><h3>多くの人が陥る6つの「勘違い」</h3></div></div>
+  <div class="grid-3" style="margin-top:16px;">
+    <div class="card card-red"><h4 style="font-size:16px;">01. とりあえずケース対策から</h4><p>人物面の対策も同様に重要。強固な志望動機と職務経歴書が先。</p></div>
+    <div class="card card-red"><h4 style="font-size:16px;">02. 地頭さえ良ければ受かる</h4><p>思考力は前提条件。その上で「マチュアさ」「チャーム」が必要。</p></div>
+    <div class="card card-red"><h4 style="font-size:16px;">03. エージェントにお任せ</h4><p>「主体的に使いこなす」もの。主役はあなた自身。</p></div>
+    <div class="card card-red"><h4 style="font-size:16px;">04. 関係ない経験はダメ</h4><p>「どう考え、どう乗り越えたか」が重要。ユニーク経験こそ差別化要因。</p></div>
+    <div class="card card-red"><h4 style="font-size:16px;">05. リファラルが有利</h4><p>面接官は「思考力」「カルチャーフィット」のみを見ている。</p></div>
+    <div class="card card-red"><h4 style="font-size:16px;">06. 大手ほど良い</h4><p>プロジェクトの働き方は大小で変わらない。テーマの幅と人の多さの違い。</p></div>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 2</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 2</span></div>
 </section>
 
-<!-- ====== SLIDE 12: Core experiences ====== -->
-<section class="slide bg-mid" id="s12">
-  <span class="slide-number">12</span>
-  <div class="section-label">2-3 原体験の掘り起こし</div>
-  <h3>全ての土台 — <span class="highlight">原体験の掘り起こし方</span></h3>
-  <div class="divider"></div>
-  <div class="big-quote">
-    これまでの社会人生活で、<strong>最も大変だった・頭を使った経験</strong>を<br><span class="highlight" style="font-size:44px;">3つ</span>書き出してください
+<!-- S12: Core experiences -->
+<section class="slide bg-white" id="s12">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">2-3</div><h3>全ての土台 ― 原体験の掘り起こし方</h3></div></div>
+  <div class="quote">これまでの社会人生活で、最も大変だった・頭を使った経験を<br><span class="red" style="font-size:44px;">3つ</span> 書き出してください</div>
+  <p style="margin:14px 0 20px;">人が最も成長し、思考のクセ・行動特性・価値観が凝縮されるのは<strong>困難な壁に立ち向かっている時</strong>。</p>
+  <h4 style="margin-bottom:8px;">原体験を構造化する4つの問い</h4>
+  <div class="grid-4">
+    <div class="card" style="border-top:3px solid var(--red); padding:18px;"><h4 style="font-size:16px;">1. 状況・課題</h4><p style="font-size:15px;">どんな状況で、どんな課題に直面していたか？</p></div>
+    <div class="card" style="border-top:3px solid var(--red); padding:18px;"><h4 style="font-size:16px;">2. 思考</h4><p style="font-size:15px;">本質的なイシューは何か？どんな仮説を立てた？</p></div>
+    <div class="card" style="border-top:3px solid var(--dark); padding:18px;"><h4 style="font-size:16px;">3. 行動</h4><p style="font-size:15px;">具体的にどんなアクションを？周囲をどう巻き込んだ？</p></div>
+    <div class="card" style="border-top:3px solid var(--dark); padding:18px;"><h4 style="font-size:16px;">4. 結果と学び</h4><p style="font-size:15px;">どんな結果に？（数字で）何を学んだ？</p></div>
   </div>
-  <p style="margin:16px 0;">人が最も成長し、思考のクセ・行動特性・価値観が凝縮されるのは<strong>困難な壁に立ち向かっている時</strong>。</p>
-  <h4 style="margin-top:28px;">原体験を構造化する4つの問い</h4>
-  <div class="grid-4" style="margin-top:14px;">
-    <div class="card" style="text-align:center; border-top:2px solid var(--red);">
-      <div style="font-size:26px; margin-bottom:6px;">📋</div>
-      <h4 style="font-size:14px;">①状況・課題</h4>
-      <p style="font-size:12px;">具体的にどんな状況でどんな課題に直面？</p>
-    </div>
-    <div class="card" style="text-align:center; border-top:2px solid var(--red);">
-      <div style="font-size:26px; margin-bottom:6px;">🧠</div>
-      <h4 style="font-size:14px;">②思考</h4>
-      <p style="font-size:12px;">本質的なイシューは何か？どんな仮説を立てた？</p>
-    </div>
-    <div class="card" style="text-align:center; border-top:2px solid rgba(255,255,255,0.2);">
-      <div style="font-size:26px; margin-bottom:6px;">🏃</div>
-      <h4 style="font-size:14px;">③行動</h4>
-      <p style="font-size:12px;">具体的にどんなアクションを？周囲をどう巻き込んだ？</p>
-    </div>
-    <div class="card" style="text-align:center; border-top:2px solid rgba(255,255,255,0.2);">
-      <div style="font-size:26px; margin-bottom:6px;">🏆</div>
-      <h4 style="font-size:14px;">④結果と学び</h4>
-      <p style="font-size:12px;">どんな結果に？（数字で）何を学んだ？</p>
-    </div>
-  </div>
-  <div class="warn-box" style="max-width:700px; margin-top:16px;">
-    <p style="font-size:13px;"><strong>注意：</strong>社会人は学生の経験（アルバイト・サークル）は基本的に話さない。「ネタがないんだな」と評価されるリスク。</p>
-  </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 2</span>
-  </div>
+  <div class="box-red" style="max-width:700px;"><p style="font-size:15px;"><strong>注意：</strong>社会人の方は学生の経験（アルバイト・サークル）は基本的に話さない。「ネタがないんだな」と評価されるリスク。</p></div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 2</span></div>
 </section>
 
-<!-- ====== SLIDE 13: Resume 3 rules ====== -->
-<section class="slide bg-grad-2" id="s13">
-  <span class="slide-number">13</span>
-  <div class="section-label">2-4 職務経歴書</div>
-  <h3>職務経歴書の<span class="highlight">3つの鉄則</span></h3>
-  <div class="divider"></div>
-  <div class="grid-3" style="margin-top:20px;">
-    <div class="card" style="border-top:3px solid var(--red);">
-      <div class="card-number">01</div>
-      <h4 style="font-size:15px;">結果ではなく<br>プロセスで語れ</h4>
-      <div class="point-box" style="margin-top:10px; padding:14px;">
-        <p style="font-size:13px; text-align:center; color:var(--red-light);">
-          「〇〇と考え、▲▲というアクションを起こした結果、■■となった」
-        </p>
-      </div>
-      <p style="margin-top:10px;">「何を考え、どう行動したか」にユニークさが宿る。</p>
-    </div>
-    <div class="card" style="border-top:3px solid var(--red-light);">
-      <div class="card-number">02</div>
-      <h4 style="font-size:15px;">コンサル適性を<br>埋め込め</h4>
-      <ul class="check-list" style="margin-top:10px;">
-        <li style="font-size:13px;"><strong>イシュー特定力</strong>：真の原因を「特定」</li>
-        <li style="font-size:13px;"><strong>構造化・リード力</strong>：「3つのフェーズに分けて」推進</li>
-        <li style="font-size:13px;"><strong>地頭の良さ</strong>：ユニークで賢い工夫を記述</li>
-      </ul>
-    </div>
-    <div class="card" style="border-top:3px solid rgba(255,255,255,0.3);">
-      <div class="card-number">03</div>
-      <h4 style="font-size:15px;">結果はインパクトで<br>表現せよ</h4>
-      <div class="compare-table" style="margin-top:10px;">
-        <div class="compare-bad" style="padding:12px;">
-          <div class="compare-label" style="font-size:10px;">✕ 平凡</div>
-          <p style="font-size:12px;">業務効率を15%改善した</p>
-        </div>
-        <div class="compare-good" style="padding:12px;">
-          <div class="compare-label" style="font-size:10px;">◎ インパクト</div>
-          <p style="font-size:12px;">月間工数<strong>200時間削減</strong>、提案時間を創出</p>
-        </div>
-      </div>
-    </div>
+<!-- S13: Resume 3 rules -->
+<section class="slide bg-light" id="s13">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">2-4</div><h3>職務経歴書の3つの鉄則</h3></div></div>
+  <div class="grid-3" style="margin-top:16px;">
+    <div class="card" style="border-top:3px solid var(--red);"><div class="card-number">01</div><h4 style="font-size:17px;">結果ではなくプロセスで語れ</h4><div class="box-red" style="margin-top:10px; padding:14px; text-align:center;"><p style="font-size:15px; color:var(--red);">「〇〇と考え、▲▲というアクションを起こした結果、■■となった」</p></div><p style="margin-top:10px;">「何を考え、どう行動したか」にユニークさが宿る。</p></div>
+    <div class="card" style="border-top:3px solid var(--red-light);"><div class="card-number">02</div><h4 style="font-size:17px;">コンサル適性を埋め込め</h4><ul class="list list-sm" style="margin-top:10px;"><li><strong>イシュー特定力</strong>：真の原因を「特定」</li><li><strong>構造化・リード力</strong>：「3つのフェーズに分けて」推進</li><li><strong>地頭の良さ</strong>：ユニークで賢い工夫を記述</li></ul></div>
+    <div class="card" style="border-top:3px solid var(--dark);"><div class="card-number">03</div><h4 style="font-size:17px;">結果はインパクトで表現せよ</h4><div class="compare" style="margin-top:10px;"><div class="compare-x"><div class="compare-label">平凡</div><p>業務効率を15%改善した</p></div><div class="compare-o"><div class="compare-label">インパクト</div><p>月間工数<strong>200時間削減</strong>、提案時間を創出</p></div></div></div>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 2</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 2</span></div>
 </section>
 
-<!-- ====== SLIDE 14: Behavioral ====== -->
-<section class="slide bg-mid" id="s14">
-  <span class="slide-number">14</span>
-  <div class="section-label">2-5 ビヘイビア面接</div>
-  <h3>ビヘイビア面接 — <span class="highlight">2つの説明の型</span></h3>
-  <div class="divider"></div>
-  <p style="margin-bottom:20px;">「過去の行動こそが未来のパフォーマンスを予測する最良の指標」</p>
+<!-- S14: Behavioral -->
+<section class="slide bg-white" id="s14">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">2-5</div><h3>ビヘイビア面接 ― 2つの説明の型</h3></div></div>
+  <p style="margin-bottom:16px;">「過去の行動こそが未来のパフォーマンスを予測する最良の指標」</p>
   <div class="grid-2" style="max-width:1000px;">
-    <div class="card" style="border-top:3px solid var(--red);">
-      <h4 style="font-size:18px; color:var(--red-light);">型① V字回復型</h4>
-      <p style="margin-bottom:14px;">一度失敗し、学びを得て成功へ導いた経験</p>
-      <div style="font-size:13px; color:var(--white-muted); line-height:2.2;">
-        <div>❶ 前提（Situation）</div>
-        <div>❷ 課題（Problem）</div>
-        <div>❸ 最初の打ち手と思考</div>
-        <div style="color:var(--red-light);">❹ 失敗と原因分析</div>
-        <div style="color:var(--red-light);">❺ 真の課題の再設定</div>
-        <div>❻ 新たな打ち手と実行</div>
-        <div>❼ 最終結果と学び</div>
-      </div>
-      <div class="point-box" style="margin-top:14px; padding:12px;">
-        <p style="font-size:13px;"><strong>アピール：</strong>学習能力・知的柔軟性</p>
-      </div>
-    </div>
-    <div class="card" style="border-top:3px solid rgba(255,255,255,0.3);">
-      <h4 style="font-size:18px;">型② 一点突破型</h4>
-      <p style="margin-bottom:14px;">独自の洞察で困難を乗り越え成功へ導いた経験</p>
-      <div style="font-size:13px; color:var(--white-muted); line-height:2.2;">
-        <div>❶ 前提と困難な課題</div>
-        <div style="color:var(--red-light);">❷ 独自のイシュー発見と着眼点</div>
-        <div>❸ 打ち手立案</div>
-        <div>❹ ユニークな打ち手の実行</div>
-        <div>❺ 結果と成功要因の分析</div>
-      </div>
-      <div class="point-box" style="margin-top:14px; padding:12px;">
-        <p style="font-size:13px;"><strong>アピール：</strong>課題特定力・粘り強い実行力</p>
-      </div>
-    </div>
+    <div class="card" style="border-top:4px solid var(--red);"><h4 style="font-size:20px; color:var(--red);">型1　V字回復型</h4><p style="margin-bottom:12px;">一度失敗し、学びを得て成功へ導いた経験</p><div style="font-size:15px; color:var(--sub); line-height:2.2;">1. 前提（Situation）<br>2. 課題（Problem）<br>3. 最初の打ち手と思考<br><span style="color:var(--red);">4. 失敗と原因分析</span><br><span style="color:var(--red);">5. 真の課題の再設定</span><br>6. 新たな打ち手と実行<br>7. 最終結果と学び</div><div class="box-gray" style="padding:12px;"><p style="font-size:14px;"><strong>アピール：</strong>学習能力・知的柔軟性</p></div></div>
+    <div class="card" style="border-top:4px solid var(--dark);"><h4 style="font-size:20px;">型2　一点突破型</h4><p style="margin-bottom:12px;">独自の洞察で困難を乗り越え成功へ導いた経験</p><div style="font-size:15px; color:var(--sub); line-height:2.2;">1. 前提と困難な課題<br><span style="color:var(--red);">2. 独自のイシュー発見と着眼点</span><br>3. 打ち手立案<br>4. ユニークな打ち手の実行<br>5. 結果と成功要因の分析</div><div class="box-gray" style="padding:12px;"><p style="font-size:14px;"><strong>アピール：</strong>課題特定力・粘り強い実行力</p></div></div>
   </div>
-  <div class="warn-box" style="max-width:700px; margin-top:18px;">
-    <p style="font-size:13px;"><strong>よくある失敗：</strong>主語が「私たち」/ 状況説明が長すぎ（2割に留める）/ 結果が曖昧</p>
-  </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 2</span>
-  </div>
+  <div class="box-red" style="max-width:700px;"><p style="font-size:15px;"><strong>よくある失敗：</strong>主語が「私たち」/ 状況説明が長すぎ（2割に留める）/ 結果が曖昧</p></div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 2</span></div>
 </section>
 
-<!-- ====== CHAPTER 3 COVER ====== -->
-<section class="slide bg-grad-red" id="s15">
-  <div class="deco w1"></div>
-  <span class="slide-number">15</span>
-  <div style="display:flex; align-items:center; gap:24px; margin-bottom:20px;">
-    <span class="big-number">03</span>
-    <div>
-      <div class="chapter-label">CHAPTER 3</div>
-      <h2 style="margin-bottom:0;">ケース面接の<br>正体と正しい対策</h2>
-    </div>
-  </div>
-  <div class="divider"></div>
-  <p class="lead">最大の壁を正しく理解し、最短距離で合格へ</p>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 3</span>
-  </div>
+<!-- S15: CH3 COVER -->
+<section class="slide bg-dark" id="s15">
+  <div style="display:flex; align-items:center; gap:28px;"><span class="big-num" style="font-size:80px; opacity:0.3;">03</span><div><div class="section-label">Chapter 3</div><h2 style="color:#fff;">ケース面接の正体と正しい対策</h2></div></div>
+  <div class="divider" style="margin-top:20px;"></div>
+  <p style="color:rgba(255,255,255,0.5); font-size:20px; margin-top:12px;">最大の壁を正しく理解し、最短距離で合格へ</p>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 3</span></div>
 </section>
 
-<!-- ====== SLIDE 16: Case types ====== -->
-<section class="slide bg-mid" id="s16">
-  <span class="slide-number">16</span>
-  <div class="section-label">3-1 ケース面接とは</div>
-  <h3>ケース面接の<span class="highlight">2つの種類</span></h3>
-  <div class="divider"></div>
-  <div class="grid-2" style="max-width:880px; margin-top:30px;">
-    <div class="card" style="border-top:3px solid var(--red); text-align:center; padding:36px;">
-      <div style="font-size:44px; margin-bottom:14px;">📐</div>
-      <h4 style="font-size:20px;">フェルミ推定</h4>
-      <p style="margin-top:10px;">「日本にある車の台数は？」<br>正解のない巨大な数字を<strong>論理的に概算</strong></p>
-    </div>
-    <div class="card" style="border-top:3px solid rgba(255,255,255,0.3); text-align:center; padding:36px;">
-      <div style="font-size:44px; margin-bottom:14px;">💼</div>
-      <h4 style="font-size:20px;">ビジネスケース</h4>
-      <p style="margin-top:10px;">「セブンイレブンの売上を1.3倍に」<br>面接官との<strong>対話で解決策を構築</strong></p>
-    </div>
+<!-- S16: Case types -->
+<section class="slide bg-white" id="s16">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">3-1</div><h3>ケース面接の2つの種類</h3></div></div>
+  <div class="grid-2" style="max-width:860px; margin-top:24px;">
+    <div class="card" style="border-top:4px solid var(--red); padding:32px; text-align:center;"><h4 style="font-size:24px;">フェルミ推定</h4><p style="margin-top:10px;">「日本にある車の台数は？」<br>正解のない巨大な数字を<strong>論理的に概算</strong></p></div>
+    <div class="card" style="border-top:4px solid var(--dark); padding:32px; text-align:center;"><h4 style="font-size:24px;">ビジネスケース</h4><p style="margin-top:10px;">「セブンイレブンの売上を1.3倍に」<br>面接官との<strong>対話で解決策を構築</strong></p></div>
   </div>
-  <div class="point-box" style="max-width:600px; margin-top:28px; text-align:center;">
-    <p style="font-size:17px;">根本的に問われている能力は<strong class="highlight">同じ</strong></p>
-  </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 3</span>
-  </div>
+  <div class="box-gray" style="max-width:500px; margin-top:24px; text-align:center;"><p style="font-size:19px;">根本的に問われている能力は<strong class="red">同じ</strong></p></div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 3</span></div>
 </section>
 
-<!-- ====== SLIDE 17: Evaluation ====== -->
-<section class="slide bg-grad-2" id="s17">
-  <span class="slide-number">17</span>
-  <div class="section-label">3-2 評価項目</div>
-  <h3>面接官は<span class="highlight">何を見ている</span>のか？</h3>
-  <div class="divider"></div>
-  <p style="margin-bottom:20px;">目的は<strong>正解を当てることではない</strong>。「答えのない問いに、どう立ち向かうか」という<strong>思考プロセス</strong>。</p>
+<!-- S17: Evaluation -->
+<section class="slide bg-light" id="s17">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">3-2</div><h3>面接官は何を見ているのか？</h3></div></div>
+  <p style="margin-bottom:18px;">目的は<strong>正解を当てることではない</strong>。「答えのない問いに、どう立ち向かうか」という<strong>思考プロセス</strong>。</p>
   <div class="grid-2" style="max-width:1000px;">
-    <div class="card" style="border:1px solid rgba(200,16,46,0.3); padding:30px;">
-      <h4 style="font-size:20px; color:var(--red-light); margin-bottom:18px;">思考力</h4>
-      <div style="margin-bottom:14px;">
-        <div class="badge badge-red" style="margin-bottom:6px;">論点設計力</div>
-        <p style="font-size:14px;">課題の本質を突き「解くべき問い」を正しく設定する力</p>
-      </div>
-      <div style="margin-bottom:14px;">
-        <div class="badge badge-red" style="margin-bottom:6px;">仮説思考力</div>
-        <p style="font-size:14px;">情報が不十分な段階から筋の良い「仮の答え」を立てる力</p>
-      </div>
-      <div>
-        <div class="badge badge-red" style="margin-bottom:6px;">構造化力</div>
-        <p style="font-size:14px;">複雑な事象をMECEに整理し思考の地図を描く力</p>
-      </div>
-    </div>
-    <div class="card" style="border:1px solid rgba(255,255,255,0.15); padding:30px;">
-      <h4 style="font-size:20px; margin-bottom:18px;">伝える力</h4>
-      <div style="margin-bottom:14px;">
-        <div class="badge badge-white" style="margin-bottom:6px;">スタンス</div>
-        <p style="font-size:14px;">自分の意見や仮説を明確に表明する姿勢</p>
-      </div>
-      <div style="margin-bottom:14px;">
-        <div class="badge badge-white" style="margin-bottom:6px;">ドライブ</div>
-        <p style="font-size:14px;">議論を前に進めようとする主体性</p>
-      </div>
-      <div style="margin-bottom:14px;">
-        <div class="badge badge-white" style="margin-bottom:6px;">チャーム</div>
-        <p style="font-size:14px;">「一緒に働きたい」と思わせる素直さ</p>
-      </div>
-      <div>
-        <div class="badge badge-white" style="margin-bottom:6px;">マチュアさ</div>
-        <p style="font-size:14px;">クライアントの前に出せる社会人としての成熟度</p>
-      </div>
-    </div>
+    <div class="card" style="border-left:4px solid var(--red); padding:28px;"><h4 style="font-size:22px; color:var(--red); margin-bottom:16px;">思考力</h4><div style="margin-bottom:12px;"><span class="tag tag-red">論点設計力</span><p style="font-size:16px; margin-top:4px;">課題の本質を突き「解くべき問い」を正しく設定する力</p></div><div style="margin-bottom:12px;"><span class="tag tag-red">仮説思考力</span><p style="font-size:16px; margin-top:4px;">情報が不十分な段階から筋の良い「仮の答え」を立てる力</p></div><div><span class="tag tag-red">構造化力</span><p style="font-size:16px; margin-top:4px;">複雑な事象をMECEに整理し思考の地図を描く力</p></div></div>
+    <div class="card" style="border-left:4px solid var(--dark); padding:28px;"><h4 style="font-size:22px; margin-bottom:16px;">伝える力</h4><div style="margin-bottom:12px;"><span class="tag tag-gray">スタンス</span><p style="font-size:16px; margin-top:4px;">自分の意見や仮説を明確に表明する姿勢</p></div><div style="margin-bottom:12px;"><span class="tag tag-gray">ドライブ</span><p style="font-size:16px; margin-top:4px;">議論を前に進めようとする主体性</p></div><div style="margin-bottom:12px;"><span class="tag tag-gray">チャーム</span><p style="font-size:16px; margin-top:4px;">「一緒に働きたい」と思わせる素直さ</p></div><div><span class="tag tag-gray">マチュアさ</span><p style="font-size:16px; margin-top:4px;">クライアントの前に出せる社会人としての成熟度</p></div></div>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 3</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 3</span></div>
 </section>
 
-<!-- ====== SLIDE 18: Wrong approaches ====== -->
-<section class="slide bg-mid" id="s18">
-  <span class="slide-number">18</span>
-  <div class="section-label">3-3 間違った学習法</div>
-  <h3>多くの人が陥る<span class="highlight">間違った学習法</span></h3>
-  <div class="divider"></div>
-  <div class="grid-3" style="margin-top:20px;">
-    <div class="card card-red">
-      <h4 style="font-size:14px; color:var(--red-light);">✕ 暗記で解く</h4>
-      <p>フレームワーク依存は「自分の頭で考えていません」と宣言と同じ。<strong>思考停止の証拠。</strong></p>
-    </div>
-    <div class="card card-red">
-      <h4 style="font-size:14px; color:var(--red-light);">✕ やみくもに数をこなす</h4>
-      <p>100問を浅く解くより、<strong>1問を徹底的に深く復習</strong>する方が遥かに力になる。</p>
-    </div>
-    <div class="card card-red">
-      <h4 style="font-size:14px; color:var(--red-light);">✕ 復習をしない</h4>
-      <p>「なぜ見逃したか」「どこで間違えたか」を<strong>言語化</strong>しないと同じ過ちの繰り返し。</p>
-    </div>
-    <div class="card card-red">
-      <h4 style="font-size:14px; color:var(--red-light);">✕ インプットばかり</h4>
-      <p>知識は実践で使って初めてスキルに変わる。<strong>アウトプット練習が不可欠。</strong></p>
-    </div>
-    <div class="card card-red">
-      <h4 style="font-size:14px; color:var(--red-light);">✕ 「正解」だけを求める</h4>
-      <p>重要なのは「論理の道筋」。<strong>「なぜ」を考えずに答えだけ追うと太刀打ちできない。</strong></p>
-    </div>
+<!-- S18: Wrong approaches -->
+<section class="slide bg-white" id="s18">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">3-3</div><h3>多くの人が陥る間違った学習法</h3></div></div>
+  <div class="grid-3" style="margin-top:16px;">
+    <div class="card card-red"><h4 style="font-size:16px; color:var(--red);">暗記で解く</h4><p>フレームワーク依存は「自分の頭で考えていません」と宣言と同じ。<strong>思考停止の証拠。</strong></p></div>
+    <div class="card card-red"><h4 style="font-size:16px; color:var(--red);">やみくもに数をこなす</h4><p>100問を浅く解くより、<strong>1問を徹底的に深く復習</strong>する方が遥かに力になる。</p></div>
+    <div class="card card-red"><h4 style="font-size:16px; color:var(--red);">復習をしない</h4><p>「なぜ見逃したか」「どこで間違えたか」を<strong>言語化</strong>しないと同じ過ちの繰り返し。</p></div>
+    <div class="card card-red"><h4 style="font-size:16px; color:var(--red);">インプットばかり</h4><p>知識は実践で使って初めてスキルに変わる。<strong>アウトプット練習が不可欠。</strong></p></div>
+    <div class="card card-red"><h4 style="font-size:16px; color:var(--red);">「正解」だけを求める</h4><p>重要なのは「論理の道筋」。<strong>「なぜ」を考えずに答えだけ追うと太刀打ちできない。</strong></p></div>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 3</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 3</span></div>
 </section>
 
-<!-- ====== SLIDE 19: Right approach ====== -->
-<section class="slide bg-grad-red" id="s19">
-  <span class="slide-number">19</span>
-  <div class="section-label">3-4 正しい学習ステップ</div>
-  <h3>合格への<span class="highlight">正しい学習サイクル</span></h3>
-  <div class="divider"></div>
-  <div style="display:flex; justify-content:center; margin-top:36px;">
-    <div style="display:flex; gap:18px; align-items:center; flex-wrap:wrap; justify-content:center;">
-      <div class="card" style="width:260px; text-align:center; border:1px solid rgba(200,16,46,0.3); padding:28px;">
-        <div style="font-size:40px; margin-bottom:10px;">📖</div>
-        <div class="badge badge-red" style="margin-bottom:10px;">STEP 1</div>
-        <h4 style="font-size:16px;">正しい知識をインプット</h4>
-        <p style="font-size:13px; margin-top:6px;">プロから「正しい型」を学ぶ。論点設計→仮説構築→検証。</p>
-      </div>
-      <div style="font-size:30px; color:var(--red);">→</div>
-      <div class="card" style="width:260px; text-align:center; border:1px solid rgba(255,255,255,0.15); padding:28px;">
-        <div style="font-size:40px; margin-bottom:10px;">🔄</div>
-        <div class="badge badge-white" style="margin-bottom:10px;">STEP 2</div>
-        <h4 style="font-size:16px;">反復練習と実践演習</h4>
-        <p style="font-size:13px; margin-top:6px;">筆記ケースで型を体に覚えさせ、1on1の壁打ちで実践。</p>
-      </div>
-      <div style="font-size:30px; color:var(--red);">→</div>
-      <div class="card" style="width:260px; text-align:center; border:1px solid rgba(255,255,255,0.08); padding:28px;">
-        <div style="font-size:40px; margin-bottom:10px;">🎯</div>
-        <div class="badge" style="background:rgba(200,16,46,0.1); color:var(--red-light);">REPEAT</div>
-        <h4 style="font-size:16px; margin-top:10px;">復習 → 再びSTEP 1へ</h4>
-        <p style="font-size:13px; margin-top:6px;">このサイクルこそがスキルを定着させる唯一の方法。</p>
-      </div>
-    </div>
+<!-- S19: Right approach -->
+<section class="slide bg-light" id="s19">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">3-4</div><h3>合格への正しい学習サイクル</h3></div></div>
+  <div class="flow" style="margin-top:28px; max-width:900px;">
+    <div class="flow-step" style="padding:28px 20px;"><span class="tag tag-red" style="margin-bottom:10px;">STEP 1</span><h4 style="font-size:18px; margin-top:8px;">正しい知識をインプット</h4><p style="font-size:15px; margin-top:6px;">プロから「正しい型」を学ぶ。論点設計→仮説構築→検証。</p></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step" style="padding:28px 20px;"><span class="tag tag-red" style="margin-bottom:10px;">STEP 2</span><h4 style="font-size:18px; margin-top:8px;">反復練習と実践演習</h4><p style="font-size:15px; margin-top:6px;">筆記ケースで型を体に覚えさせ、1on1の壁打ちで実践。</p></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step" style="padding:28px 20px;"><span class="tag tag-gray" style="margin-bottom:10px;">REPEAT</span><h4 style="font-size:18px; margin-top:8px;">復習 → 再びSTEP 1へ</h4><p style="font-size:15px; margin-top:6px;">このサイクルこそがスキルを定着させる唯一の方法。</p></div>
   </div>
-  <div class="big-quote" style="margin-top:36px;">
-    独学には限界がある。特に「伝える力」は<br>他者からの<strong>客観的なフィードバック</strong>なしには絶対に上達しない
-  </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 3</span>
-  </div>
+  <div class="quote" style="margin-top:32px;">独学には限界がある。特に「伝える力」は他者からの<strong>客観的なフィードバック</strong>なしには絶対に上達しない</div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 3</span></div>
 </section>
 
-<!-- ====== CHAPTER 4&5 COVER ====== -->
-<section class="slide bg-grad-1" id="s20">
-  <div class="deco r1"></div>
-  <span class="slide-number">20</span>
-  <div style="display:flex; align-items:center; gap:24px; margin-bottom:20px;">
-    <span class="big-number">04</span>
-    <div>
-      <div class="chapter-label">CHAPTER 4 & 5</div>
-      <h2 style="margin-bottom:0;">エージェント活用<br>& 応募戦略</h2>
-    </div>
-  </div>
-  <div class="divider"></div>
-  <p class="lead">内定確率を最大化するパートナー選びと「量」と「順番」の戦略</p>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 4&5</span>
-  </div>
+<!-- S20: CH4&5 COVER -->
+<section class="slide bg-dark" id="s20">
+  <div style="display:flex; align-items:center; gap:28px;"><span class="big-num" style="font-size:80px; opacity:0.3;">04</span><div><div class="section-label">Chapter 4 & 5</div><h2 style="color:#fff;">エージェント活用 & 応募戦略</h2></div></div>
+  <div class="divider" style="margin-top:20px;"></div>
+  <p style="color:rgba(255,255,255,0.5); font-size:20px; margin-top:12px;">内定確率を最大化するパートナー選びと「量」と「順番」の戦略</p>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 4&5</span></div>
 </section>
 
-<!-- ====== SLIDE 21: Why agents ====== -->
-<section class="slide bg-mid" id="s21">
-  <span class="slide-number">21</span>
-  <div class="section-label">4-1 なぜエージェントが必要か</div>
-  <h3>エージェントが<span class="highlight">ほぼ必須</span>な2つの理由</h3>
-  <div class="divider"></div>
-  <div class="grid-2" style="max-width:1000px; margin-top:28px;">
-    <div class="card" style="border-top:3px solid var(--red); padding:30px;">
-      <div class="icon-box red">📈</div>
-      <h4 style="font-size:18px;">理由①：選考準備の質を高める</h4>
-      <ul class="check-list" style="margin-top:14px;">
-        <li><strong>戦略的な書類添削</strong> — 経験をコンサルに評価される言葉へ</li>
-        <li><strong>質の高いケース対策</strong> — 思考のクセを客観的に指摘</li>
-        <li><strong>精神的な支え</strong> — 長期戦における伴走者</li>
-      </ul>
-    </div>
-    <div class="card" style="border-top:3px solid rgba(255,255,255,0.3); padding:30px;">
-      <div class="icon-box wh">⏰</div>
-      <h4 style="font-size:18px;">理由②：転職活動の効率を上げる</h4>
-      <ul class="check-list" style="margin-top:14px;">
-        <li><strong>進行管理の代行</strong> — 面接日程調整・連絡を代行</li>
-        <li><strong>応募戦略の相談相手</strong> — 最適な順番を一緒に考える</li>
-        <li>選考対策に<strong>集中できる環境</strong>を整えてくれる</li>
-      </ul>
-    </div>
+<!-- S21: Why agents -->
+<section class="slide bg-white" id="s21">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">4-1</div><h3>エージェントがほぼ必須な2つの理由</h3></div></div>
+  <div class="grid-2" style="max-width:1000px; margin-top:20px;">
+    <div class="card" style="border-top:4px solid var(--red); padding:28px;"><h4 style="font-size:20px;">理由1：選考準備の質を高める</h4><ul class="list list-sm" style="margin-top:12px;"><li><strong>戦略的な書類添削</strong> ― 経験をコンサルに評価される言葉へ</li><li><strong>質の高いケース対策</strong> ― 思考のクセを客観的に指摘</li><li><strong>精神的な支え</strong> ― 長期戦における伴走者</li></ul></div>
+    <div class="card" style="border-top:4px solid var(--dark); padding:28px;"><h4 style="font-size:20px;">理由2：転職活動の効率を上げる</h4><ul class="list list-sm" style="margin-top:12px;"><li><strong>進行管理の代行</strong> ― 面接日程調整・連絡を代行</li><li><strong>応募戦略の相談相手</strong> ― 最適な順番を一緒に考える</li><li>選考対策に<strong>集中できる環境</strong>を整えてくれる</li></ul></div>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 4</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 4</span></div>
 </section>
 
-<!-- ====== SLIDE 22: Bad agents ====== -->
-<section class="slide bg-grad-2" id="s22">
-  <span class="slide-number">22</span>
-  <div class="section-label">4-2 見極め方</div>
-  <h3>「悪いエージェント」の<span class="highlight">5つの特徴</span></h3>
-  <div class="divider"></div>
-  <div style="max-width:960px; margin-top:20px;">
-    <div class="card card-red" style="margin-bottom:10px; display:flex; gap:18px; align-items:center;">
-      <div class="card-number" style="min-width:36px;">01</div>
-      <div>
-        <h4 style="font-size:15px; color:var(--red-light);">専門性が絶望的に低い</h4>
-        <p style="font-size:13px;">MBBと総合ファーム戦略部門の違いを理解していない。ただの求人紹介屋。</p>
-      </div>
-    </div>
-    <div class="card card-red" style="margin-bottom:10px; display:flex; gap:18px; align-items:center;">
-      <div class="card-number" style="min-width:36px;">02</div>
-      <div>
-        <h4 style="font-size:15px; color:var(--red-light);">戦略的な選考サポートが皆無</h4>
-        <p style="font-size:13px;">「まず応募して反応を見ましょう」が口癖。書類添削やケース対策を一切行わない。</p>
-      </div>
-    </div>
-    <div class="card card-red" style="margin-bottom:10px; display:flex; gap:18px; align-items:center;">
-      <div class="card-number" style="min-width:36px;">03</div>
-      <div>
-        <h4 style="font-size:15px; color:var(--red-light);">ケイパビリティがない</h4>
-        <p style="font-size:13px;">「元コンサル運営」でも指導ノウハウが体系化されていない or マンパワー不足。</p>
-      </div>
-    </div>
-    <div class="card card-red" style="margin-bottom:10px; display:flex; gap:18px; align-items:center;">
-      <div class="card-number" style="min-width:36px;">04</div>
-      <div>
-        <h4 style="font-size:15px; color:var(--red-light);">自社の都合しか考えていない</h4>
-        <p style="font-size:13px;">特定企業のゴリ押し（紹介料が高い）、やたら応募を急かす（月の売上目標のため）。</p>
-      </div>
-    </div>
-    <div class="card card-red" style="display:flex; gap:18px; align-items:center;">
-      <div class="card-number" style="min-width:36px;">05</div>
-      <div>
-        <h4 style="font-size:15px; color:var(--red-light);">コミュニケーションが一方的</h4>
-        <p style="font-size:13px;">キャリアプランに耳を傾けず一方的に求人を送りつける。フィードバックも薄い。</p>
-      </div>
-    </div>
+<!-- S22: Bad agents -->
+<section class="slide bg-light" id="s22">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">4-2</div><h3>「悪いエージェント」の5つの特徴</h3></div></div>
+  <div style="max-width:960px; margin-top:16px; display:flex; flex-direction:column; gap:10px;">
+    <div class="card card-red" style="display:flex; gap:16px; align-items:center; padding:18px 22px;"><div class="card-number" style="min-width:36px; margin:0;">01</div><div><h4 style="font-size:17px; color:var(--red);">専門性が絶望的に低い</h4><p>MBBと総合ファーム戦略部門の違いを理解していない。ただの求人紹介屋。</p></div></div>
+    <div class="card card-red" style="display:flex; gap:16px; align-items:center; padding:18px 22px;"><div class="card-number" style="min-width:36px; margin:0;">02</div><div><h4 style="font-size:17px; color:var(--red);">戦略的な選考サポートが皆無</h4><p>「まず応募して反応を見ましょう」が口癖。書類添削やケース対策を一切行わない。</p></div></div>
+    <div class="card card-red" style="display:flex; gap:16px; align-items:center; padding:18px 22px;"><div class="card-number" style="min-width:36px; margin:0;">03</div><div><h4 style="font-size:17px; color:var(--red);">ケイパビリティがない</h4><p>「元コンサル運営」でも指導ノウハウが体系化されていない or マンパワー不足。</p></div></div>
+    <div class="card card-red" style="display:flex; gap:16px; align-items:center; padding:18px 22px;"><div class="card-number" style="min-width:36px; margin:0;">04</div><div><h4 style="font-size:17px; color:var(--red);">自社の都合しか考えていない</h4><p>特定企業のゴリ押し（紹介料が高い）、やたら応募を急かす（月の売上目標のため）。</p></div></div>
+    <div class="card card-red" style="display:flex; gap:16px; align-items:center; padding:18px 22px;"><div class="card-number" style="min-width:36px; margin:0;">05</div><div><h4 style="font-size:17px; color:var(--red);">コミュニケーションが一方的</h4><p>キャリアプランに耳を傾けず一方的に求人を送りつける。フィードバックも薄い。</p></div></div>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 4</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 4</span></div>
 </section>
 
-<!-- ====== SLIDE 23: Application strategy ====== -->
-<section class="slide bg-mid" id="s23">
-  <span class="slide-number">23</span>
-  <div class="section-label">5. 応募戦略</div>
-  <h3>内定確率を最大化する<span class="highlight">「量」と「順番」</span></h3>
-  <div class="divider"></div>
-  <div class="two-col" style="margin-top:28px;">
-    <div>
-      <h4 style="font-size:18px;">大前提：「量」を担保する</h4>
-      <p style="margin-bottom:14px;">推奨応募数は<strong class="highlight" style="font-size:26px;">平均20社</strong></p>
-      <p>一つ一つの面接が<strong>最高の実践演習</strong>。「記念受験はしたくない」と絞るのはもったいない。人生で重要な転職では可能性を限定しすぎない。</p>
-    </div>
-    <div>
-      <h4 style="font-size:18px;">応募の「順番」3ステップ</h4>
-      <div class="timeline" style="margin-top:14px;">
-        <div class="timeline-item">
-          <div class="timeline-label">STEP 1</div>
-          <div class="timeline-title" style="font-size:15px;">3グループに分類</div>
-          <div class="tag-list">
-            <span class="tag red-border">第1志望群：憧れのファーム</span>
-            <span class="tag">第2志望群：相性◎</span>
-            <span class="tag">第3志望群：志望度控えめ</span>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-label">STEP 2</div>
-          <div class="timeline-title" style="font-size:15px;">第3志望群から「腕試し」</div>
-          <div class="timeline-desc">貴重な初回実践を本命で無駄にしない。練習試合から。</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-label">STEP 3</div>
-          <div class="timeline-title" style="font-size:15px;">経験値を武器に本命へ</div>
-          <div class="timeline-desc">内定で自信を得て、最高のパフォーマンスで第1・第2志望群へ。</div>
-        </div>
-      </div>
-    </div>
+<!-- S23: Application strategy -->
+<section class="slide bg-white" id="s23">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">5</div><h3>内定確率を最大化する「量」と「順番」</h3></div></div>
+  <div class="two-col" style="margin-top:20px;">
+    <div><h4 style="font-size:20px;">大前提：「量」を担保する</h4><p style="margin:8px 0;">推奨応募数は <strong class="red" style="font-size:32px;">平均20社</strong></p><p style="font-size:17px;">一つ一つの面接が<strong>最高の実践演習</strong>。「記念受験はしたくない」と絞るのはもったいない。人生で重要な転職では可能性を限定しすぎない。</p></div>
+    <div><h4 style="font-size:20px;">応募の「順番」3ステップ</h4><div class="timeline" style="margin-top:12px;"><div class="tl-item"><div class="tl-label">STEP 1</div><div class="tl-title" style="font-size:17px;">3グループに分類</div><div style="margin-top:6px;"><span class="tag tag-red">第1志望群：憧れのファーム</span><span class="tag tag-gray">第2志望群：相性◎</span><span class="tag tag-gray">第3志望群：志望度控えめ</span></div></div><div class="tl-item"><div class="tl-label">STEP 2</div><div class="tl-title" style="font-size:17px;">第3志望群から「腕試し」</div><div class="tl-desc">貴重な初回実践を本命で無駄にしない。練習試合から。</div></div><div class="tl-item"><div class="tl-label">STEP 3</div><div class="tl-title" style="font-size:17px;">経験値を武器に本命へ</div><div class="tl-desc">内定で自信を得て、最高のパフォーマンスで第1・第2志望群へ。</div></div></div></div>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Chapter 5</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Chapter 5</span></div>
 </section>
 
-<!-- ====== SLIDE 24: SUMMARY ====== -->
-<section class="slide bg-grad-1" id="s24">
-  <div class="deco r2"></div>
-  <span class="slide-number">24</span>
-  <div style="max-width:800px;">
-    <div class="chapter-label">SUMMARY</div>
-    <h2 style="margin-bottom:20px;">本日のまとめ</h2>
-    <div class="divider"></div>
-    <div style="margin-top:24px;">
-      <div class="card card-red" style="margin-bottom:14px;">
-        <h4 style="font-size:16px;">① 戦略コンサルのリアル</h4>
-        <p style="font-size:14px;">99%の泥臭い作業。本質は「正しい問いを立てる」こと。フレームワーク依存は罠。</p>
-      </div>
-      <div class="card card-red" style="margin-bottom:14px;">
-        <h4 style="font-size:16px;">② 下準備が全ての土台</h4>
-        <p style="font-size:14px;">原体験3つ → 4つの問いで構造化 → プロセスで語る職務経歴書 → V字回復/一点突破のビヘイビア面接。</p>
-      </div>
-      <div class="card card-red" style="margin-bottom:14px;">
-        <h4 style="font-size:16px;">③ ケース面接は「思考力」×「伝える力」</h4>
-        <p style="font-size:14px;">正解を当てるゲームではない。インプット → 反復練習 → 実践演習のサイクルを回す。</p>
-      </div>
-      <div class="card card-red">
-        <h4 style="font-size:16px;">④ 戦略的な応募が内定確率を最大化</h4>
-        <p style="font-size:14px;">20社に応募。第3志望で腕試し → 経験値を武器に本命へ。良いエージェントを見極める。</p>
-      </div>
-    </div>
+<!-- S24: SUMMARY -->
+<section class="slide bg-light" id="s24">
+  <div class="section-head"><div class="red-bar"></div><div><div class="section-label">Summary</div><h2>本日のまとめ</h2></div></div>
+  <div style="margin-top:20px; max-width:900px; display:flex; flex-direction:column; gap:12px;">
+    <div class="card card-red"><h4 style="font-size:18px;">1. 戦略コンサルのリアル</h4><p>99%の泥臭い作業。本質は「正しい問いを立てる」こと。フレームワーク依存は罠。</p></div>
+    <div class="card card-red"><h4 style="font-size:18px;">2. 下準備が全ての土台</h4><p>原体験3つ → 4つの問いで構造化 → プロセスで語る職務経歴書 → V字回復/一点突破のビヘイビア面接。</p></div>
+    <div class="card card-red"><h4 style="font-size:18px;">3. ケース面接は「思考力」×「伝える力」</h4><p>正解を当てるゲームではない。インプット → 反復練習 → 実践演習のサイクルを回す。</p></div>
+    <div class="card card-red"><h4 style="font-size:18px;">4. 戦略的な応募が内定確率を最大化</h4><p>20社に応募。第3志望で腕試し → 経験値を武器に本命へ。良いエージェントを見極める。</p></div>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>Summary</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span>Summary</span></div>
 </section>
 
-<!-- ====== SLIDE 25: CTA ====== -->
-<section class="slide bg-grad-red" id="s25">
-  <div class="deco r1"></div>
-  <div class="deco r3"></div>
-  <span class="slide-number">25</span>
+<!-- S25: CTA -->
+<section class="slide bg-white" id="s25">
   <div style="text-align:center; max-width:800px; margin:0 auto;">
-    <div class="section-label">STRATEGISTS</div>
-    <h2 style="margin-bottom:18px;">
-      再現性の高い対策プログラムで<br><span class="highlight">戦略コンサル内定</span>へ
-    </h2>
-    <div class="divider" style="margin:18px auto;"></div>
-    <div class="grid-3" style="margin:28px 0;">
-      <div class="card" style="text-align:center; padding:22px;">
-        <div style="font-size:28px; margin-bottom:8px;">🎓</div>
-        <h4 style="font-size:14px;">体系的・科学的な<br>教材・カリキュラム</h4>
-      </div>
-      <div class="card" style="text-align:center; padding:22px;">
-        <div style="font-size:28px; margin-bottom:8px;">🤝</div>
-        <h4 style="font-size:14px;">MBB面接官監修の<br>ケース対策プログラム</h4>
-      </div>
-      <div class="card" style="text-align:center; padding:22px;">
-        <div style="font-size:28px; margin-bottom:8px;">🔥</div>
-        <h4 style="font-size:14px;">粘り強く伴走する<br>メンター陣</h4>
-      </div>
+    <img src="logo.png" class="logo" alt="Strategists" style="margin-bottom:28px;">
+    <h2 style="margin-bottom:14px;">再現性の高い対策プログラムで<br><span class="red">戦略コンサル内定</span>へ</h2>
+    <div class="divider" style="margin:14px auto;"></div>
+    <div class="grid-3" style="margin:24px 0;">
+      <div class="card card-gray" style="text-align:center; padding:20px;"><h4 style="font-size:16px;">体系的・科学的な<br>教材・カリキュラム</h4></div>
+      <div class="card card-gray" style="text-align:center; padding:20px;"><h4 style="font-size:16px;">MBB面接官監修の<br>ケース対策プログラム</h4></div>
+      <div class="card card-gray" style="text-align:center; padding:20px;"><h4 style="font-size:16px;">粘り強く伴走する<br>メンター陣</h4></div>
     </div>
-    <p style="font-size:17px; text-align:center; color:var(--white-muted); margin-bottom:28px;">
-      お客様の<strong>6割超が初心者</strong>からスタートし、<strong>多数の内定</strong>を獲得
-    </p>
-    <div style="display:inline-block; padding:14px 44px; background:var(--red); font-size:18px; font-weight:700; letter-spacing:1px; border-radius:2px;">
-      まずは初回メンタリングへ
-    </div>
-    <p style="font-size:13px; color:rgba(255,255,255,0.3); margin-top:14px;">無理な勧誘は一切ございません。お気軽にお申し込みください。</p>
+    <p style="font-size:19px; text-align:center; margin-bottom:24px;">お客様の<strong>6割超が初心者</strong>からスタートし、<strong>多数の内定</strong>を獲得</p>
+    <div style="display:inline-block; padding:14px 48px; background:var(--red); color:#fff; font-size:20px; font-weight:700; border-radius:4px;">まずは初回メンタリングへ</div>
+    <p class="small" style="margin-top:12px;">無理な勧誘は一切ございません。お気軽にお申し込みください。</p>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span></span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span></span></div>
 </section>
 
-<!-- ====== SLIDE 26: THANK YOU ====== -->
-<section class="slide bg-black" id="s26" style="text-align:center;">
-  <div class="deco r1"></div>
-  <div class="deco r2"></div>
-  <span class="slide-number">26</span>
+<!-- S26: THANK YOU -->
+<section class="slide bg-dark" id="s26" style="text-align:center;">
   <div>
-    <h1 style="font-size:clamp(48px, 6vw, 80px); margin-bottom:14px;">
-      Thank You
-    </h1>
-    <div class="divider" style="margin:18px auto;"></div>
-    <p class="subtitle" style="margin:0 auto; text-align:center;">
-      ケース面接対策塾 <strong>Strategists</strong>
-    </p>
-    <p style="font-size:13px; color:rgba(255,255,255,0.2); margin-top:20px; text-align:center;">
-      運営：株式会社トップティア
-    </p>
+    <img src="logo.png" class="logo" alt="Strategists" style="margin-bottom:32px; filter: brightness(0) invert(1);">
+    <h1 style="font-size:64px; color:#fff; margin-bottom:12px;">Thank You</h1>
+    <div class="divider" style="margin:14px auto;"></div>
+    <p style="font-size:18px; color:rgba(255,255,255,0.5); margin-top:16px;">ケース面接対策塾 Strategists<br><span style="font-size:14px;">運営：株式会社トップティア</span></p>
   </div>
-  <div class="slide-footer">
-    <span>© Strategists / Top Tier Inc.</span>
-    <span>CONFIDENTIAL</span>
-  </div>
+  <div class="slide-footer"><span>&copy; Strategists / Top Tier Inc.</span><span>CONFIDENTIAL</span></div>
 </section>
 
-<!-- ===== NAV SCRIPT ===== -->
 <script>
 (function() {
   const slides = document.querySelectorAll('.slide');
-  const nav = document.getElementById('navDots');
+  const nav = document.getElementById('nav');
   slides.forEach((s, i) => {
     const d = document.createElement('button');
     d.className = 'nav-dot';
@@ -1328,12 +473,7 @@
   });
   const dots = nav.querySelectorAll('.nav-dot');
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const idx = Array.from(slides).indexOf(e.target);
-        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-      }
-    });
+    entries.forEach(e => { if (e.isIntersecting) { const idx = Array.from(slides).indexOf(e.target); dots.forEach((d, i) => d.classList.toggle('active', i === idx)); } });
   }, { threshold: 0.5 });
   slides.forEach(s => obs.observe(s));
 })();
