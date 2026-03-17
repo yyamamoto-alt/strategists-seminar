@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>タワマンの価値 | Strategists</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap');
+
+  :root {
+    --red: #A62B17;
+    --black: #000000;
+    --dark: #1a1a1a;
+    --text: #222;
+    --bg: #fff;
+    --bg-light: #f5f5f5;
+    --border: #e0e0e0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text); }
+
+  .slide {
+    width: 100%; height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 40px 32px;
+    position: relative; scroll-snap-align: start;
+    text-align: center;
+  }
+
+  .bg-dark { background: var(--dark); color: #fff; }
+  .bg-dark h2, .bg-dark h3 { color: #fff; }
+  .bg-white { background: var(--bg); }
+  .bg-light { background: var(--bg-light); }
+
+  h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 64px; font-weight: 900; line-height: 1.2;
+    color: var(--black);
+  }
+  .bg-dark h1 { color: #fff; }
+
+  h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 48px; font-weight: 900; line-height: 1.3;
+    color: var(--black);
+  }
+
+  h3 {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 32px; font-weight: 700; line-height: 1.4;
+    color: var(--text);
+  }
+
+  p {
+    font-size: 28px; line-height: 1.6; color: var(--text);
+  }
+  .bg-dark p { color: rgba(255,255,255,0.7); }
+
+  .red { color: var(--red); }
+  .divider { width: 48px; height: 4px; background: var(--red); margin: 20px auto; }
+
+  .logo { height: 32px; margin-bottom: 32px; }
+
+  /* Large keyword boxes */
+  .keyword-row {
+    display: flex; gap: 20px; margin-top: 32px;
+    flex-wrap: wrap; justify-content: center;
+  }
+  .keyword {
+    padding: 24px 36px;
+    border-radius: 6px;
+    font-size: 28px; font-weight: 900;
+    font-family: 'Noto Serif JP', serif;
+  }
+  .keyword-red { background: var(--red); color: #fff; }
+  .keyword-dark { background: var(--dark); color: #fff; }
+  .keyword-outline { background: transparent; border: 3px solid var(--red); color: var(--red); }
+  .keyword-light { background: var(--bg-light); border: 2px solid var(--border); color: var(--text); }
+
+  /* Stakeholder cards - big */
+  .sh-grid {
+    display: flex; gap: 20px; margin-top: 32px;
+    flex-wrap: wrap; justify-content: center;
+  }
+  .sh-card {
+    padding: 28px 24px;
+    border-radius: 6px;
+    border-top: 5px solid var(--red);
+    background: var(--bg);
+    text-align: center;
+    min-width: 200px; flex: 1; max-width: 300px;
+  }
+  .sh-card h3 { font-size: 26px; margin-bottom: 8px; }
+  .sh-card p { font-size: 22px; color: #555; }
+
+  /* Tree for structure */
+  .tree-yt { margin-top: 32px; width: 100%; max-width: 800px; }
+  .tree-yt-row {
+    display: flex; align-items: stretch; gap: 16px; margin-bottom: 20px;
+  }
+  .tree-yt-label {
+    min-width: 240px; padding: 20px 24px;
+    font-size: 22px; font-weight: 900;
+    border-radius: 6px; display: flex; align-items: center;
+    color: #fff;
+  }
+  .tree-yt-label.l-red { background: var(--red); }
+  .tree-yt-label.l-dark { background: var(--dark); }
+  .tree-yt-items { flex: 1; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .tree-yt-item {
+    padding: 16px 20px;
+    background: var(--bg-light); border: 2px solid var(--border);
+    border-radius: 6px;
+    font-size: 22px; font-weight: 700;
+  }
+
+  /* Takeaway items */
+  .take {
+    display: flex; align-items: center; gap: 24px;
+    margin-bottom: 28px; text-align: left;
+  }
+  .take-num {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 56px; font-weight: 900;
+    color: var(--red); opacity: 0.5; line-height: 1;
+    flex-shrink: 0;
+  }
+  .take h3 { font-size: 30px; color: #fff; margin-bottom: 0; }
+
+  .footer {
+    position: absolute; bottom: 12px; left: 32px; right: 32px;
+    font-size: 11px; color: rgba(0,0,0,0.15); letter-spacing: 1px;
+    display: flex; justify-content: space-between;
+  }
+  .bg-dark .footer { color: rgba(255,255,255,0.15); }
+
+  .nav-side { position: fixed; right: 10px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 6px; }
+  .nav-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(0,0,0,0.12); cursor: pointer; transition: all 0.3s; border: none; }
+  .nav-dot:hover, .nav-dot.active { background: var(--red); transform: scale(1.5); }
+
+  @media (max-width: 600px) {
+    .slide { padding: 28px 20px; }
+    h1 { font-size: 40px; }
+    h2 { font-size: 32px; }
+    h3 { font-size: 24px; }
+    p { font-size: 20px; }
+    .keyword { font-size: 20px; padding: 16px 24px; }
+    .keyword-row { gap: 12px; }
+    .sh-card { min-width: 140px; padding: 20px 16px; }
+    .sh-card h3 { font-size: 20px; }
+    .sh-card p { font-size: 16px; }
+    .tree-yt-row { flex-direction: column; }
+    .tree-yt-label { min-width: auto; font-size: 18px; }
+    .tree-yt-item { font-size: 18px; }
+    .take-num { font-size: 40px; }
+    .take h3 { font-size: 22px; }
+    .nav-side { display: none; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav-side" id="nav"></nav>
+
+<!-- 1: TITLE -->
+<section class="slide bg-dark" id="s1">
+  <img src="../logo.png" class="logo" alt="Strategists" style="filter: brightness(0) invert(1);">
+  <h1>タワマンの価値</h1>
+  <div class="divider" style="background:#fff; opacity:0.3;"></div>
+  <p style="color:rgba(255,255,255,0.5); font-size:24px; margin-top:8px;">ケース面接 解説</p>
+  <div class="footer"><span>&copy; Strategists</span><span></span></div>
+</section>
+
+<!-- 2: 前提 -->
+<section class="slide bg-white" id="s2">
+  <h2>前提を定義する</h2>
+  <div class="divider"></div>
+  <div class="keyword-row">
+    <div class="keyword keyword-red">都心 駅直結 タワマン</div>
+  </div>
+  <div class="keyword-row" style="margin-top:20px;">
+    <div class="keyword keyword-outline">機能的価値</div>
+    <div class="keyword keyword-outline">情緒的価値</div>
+  </div>
+  <div class="footer"><span>&copy; Strategists</span><span></span></div>
+</section>
+
+<!-- 3: 誰が -->
+<section class="slide bg-light" id="s3">
+  <h2><span class="red">誰</span>が価値を感じるか？</h2>
+  <div class="divider"></div>
+  <div class="keyword-row" style="margin-top:24px;">
+    <div class="keyword keyword-dark">タワマンに住む人</div>
+  </div>
+  <div class="keyword-row" style="margin-top:24px;">
+    <div class="keyword keyword-light">機能的価値</div>
+    <div class="keyword keyword-light">情緒的価値</div>
+  </div>
+  <div class="footer"><span>&copy; Strategists</span><span></span></div>
+</section>
+
+<!-- 4: ステークホルダー幅出し -->
+<section class="slide bg-white" id="s4">
+  <h2>他にも<span class="red">価値を感じる人</span>がいる</h2>
+  <div class="divider"></div>
+  <div class="sh-grid">
+    <div class="sh-card">
+      <h3>地権者</h3>
+      <p>土地売却益</p>
+    </div>
+    <div class="sh-card">
+      <h3>商業施設</h3>
+      <p>経済効果</p>
+    </div>
+    <div class="sh-card">
+      <h3>区（行政）</h3>
+      <p>租税収入</p>
+    </div>
+  </div>
+  <div class="footer"><span>&copy; Strategists</span><span></span></div>
+</section>
+
+<!-- 5: 構造化 -->
+<section class="slide bg-light" id="s5">
+  <h2><span class="red">構造化</span>する</h2>
+  <div class="divider"></div>
+  <div class="tree-yt">
+    <div class="tree-yt-row">
+      <div class="tree-yt-label l-red">直接的な価値</div>
+      <div class="tree-yt-items">
+        <div class="tree-yt-item">供給者<br>ゼネコン / デベロッパー / 地権者</div>
+        <div class="tree-yt-item">需要者<br>住む人 / 投資する人</div>
+      </div>
+    </div>
+    <div class="tree-yt-row">
+      <div class="tree-yt-label l-dark">付随的な価値</div>
+      <div class="tree-yt-items">
+        <div class="tree-yt-item">商業施設</div>
+        <div class="tree-yt-item">区（行政）</div>
+        <div class="tree-yt-item">訪問者 / 見る人</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>&copy; Strategists</span><span></span></div>
+</section>
+
+<!-- 6: 学び -->
+<section class="slide bg-dark" id="s6">
+  <h2 style="color:#fff; margin-bottom:32px;">学びポイント</h2>
+  <div style="max-width:700px; width:100%;">
+    <div class="take">
+      <span class="take-num">1</span>
+      <h3>定義を最初に確認する</h3>
+    </div>
+    <div class="take">
+      <span class="take-num">2</span>
+      <h3>ステークホルダーを幅出しする</h3>
+    </div>
+    <div class="take">
+      <span class="take-num">3</span>
+      <h3>ボトムアップ → 構造化</h3>
+    </div>
+  </div>
+  <div class="footer"><span>&copy; Strategists</span><span></span></div>
+</section>
+
+<script>
+(function() {
+  const slides = document.querySelectorAll('.slide');
+  const nav = document.getElementById('nav');
+  slides.forEach((s, i) => {
+    const d = document.createElement('button');
+    d.className = 'nav-dot';
+    d.addEventListener('click', () => s.scrollIntoView({ behavior: 'smooth' }));
+    nav.appendChild(d);
+  });
+  const dots = nav.querySelectorAll('.nav-dot');
+  new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { const idx = Array.from(slides).indexOf(e.target); dots.forEach((d, i) => d.classList.toggle('active', i === idx)); } });
+  }, { threshold: 0.5 }).observe && slides.forEach(s => new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { const idx = Array.from(slides).indexOf(e.target); dots.forEach((d, i) => d.classList.toggle('active', i === idx)); } });
+  }, { threshold: 0.5 }).observe(s));
+})();
+</script>
+</body>
+</html>
