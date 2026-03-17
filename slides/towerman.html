@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>タワマンの価値 | Strategists ケース解説</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700;900&display=swap');
+
+  :root {
+    --red: #A62B17;
+    --red-light: #C4412A;
+    --black: #000000;
+    --dark: #1a1a1a;
+    --text: #222222;
+    --sub: #555555;
+    --gray: #888888;
+    --border: #e0e0e0;
+    --bg: #ffffff;
+    --bg-light: #f5f5f5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; overflow-x: hidden; }
+
+  .slide {
+    width: 100%; min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 48px 64px;
+    position: relative; scroll-snap-align: start; overflow: hidden;
+    background: var(--bg);
+  }
+
+  .bg-white { background: var(--bg); }
+  .bg-light { background: var(--bg-light); }
+  .bg-dark { background: var(--dark); color: #fff; }
+  .bg-dark p, .bg-dark .sub { color: rgba(255,255,255,0.75); }
+  .bg-dark h2, .bg-dark h3, .bg-dark h4 { color: #fff; }
+  .bg-dark .slide-footer { color: rgba(255,255,255,0.25); border-top-color: rgba(255,255,255,0.1); }
+  .bg-hero { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); color: #fff; }
+  .bg-hero p { color: rgba(255,255,255,0.7); }
+  .bg-hero .slide-footer { color: rgba(255,255,255,0.25); border-top-color: rgba(255,255,255,0.1); }
+
+  h1 { font-family: 'Noto Serif JP', serif; font-size: 52px; font-weight: 900; line-height: 1.3; color: var(--black); margin-bottom: 16px; }
+  .bg-hero h1, .bg-dark h1 { color: #fff; }
+  h2 { font-family: 'Noto Serif JP', serif; font-size: 40px; font-weight: 700; line-height: 1.35; color: var(--black); margin-bottom: 12px; }
+  h3 { font-family: 'Noto Serif JP', serif; font-size: 30px; font-weight: 700; line-height: 1.4; color: var(--black); margin-bottom: 10px; }
+  h4 { font-size: 20px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+  p { font-size: 18px; line-height: 1.9; color: var(--text); }
+  .sub { font-size: 16px; color: var(--sub); }
+  .small { font-size: 14px; color: var(--gray); }
+  .red { color: var(--red); }
+  strong { font-weight: 700; }
+
+  .red-bar { display: inline-block; width: 4px; min-height: 28px; background: var(--red); margin-right: 14px; flex-shrink: 0; }
+  .section-head { display: flex; align-items: stretch; margin-bottom: 16px; }
+  .section-label { font-size: 14px; font-weight: 700; letter-spacing: 3px; color: var(--red); margin-bottom: 6px; text-transform: uppercase; }
+  .divider { width: 48px; height: 3px; background: var(--red); margin: 16px 0; }
+  .logo { height: 36px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; margin-top: 24px; }
+
+  .card { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 24px; }
+  .card-red { border-left: 4px solid var(--red); }
+  .card-gray { background: var(--bg-light); border: none; }
+  .card p { font-size: 16px; line-height: 1.8; }
+
+  .list { list-style: none; padding: 0; }
+  .list li { padding: 8px 0 8px 24px; position: relative; font-size: 18px; color: var(--text); line-height: 1.8; }
+  .list li::before { content: ''; position: absolute; left: 0; top: 17px; width: 8px; height: 2px; background: var(--red); }
+
+  .tag { display: inline-block; padding: 4px 12px; font-size: 13px; font-weight: 700; border-radius: 2px; }
+  .tag-red { background: rgba(166,43,23,0.08); color: var(--red); border: 1px solid rgba(166,43,23,0.2); }
+  .tag-gray { background: var(--bg-light); color: var(--sub); border: 1px solid var(--border); }
+
+  .box-red { background: rgba(166,43,23,0.04); border: 1px solid rgba(166,43,23,0.15); border-radius: 4px; padding: 18px 22px; margin-top: 14px; }
+  .box-gray { background: var(--bg-light); border: 1px solid var(--border); border-radius: 4px; padding: 18px 22px; margin-top: 14px; }
+
+  .quote { font-family: 'Noto Serif JP', serif; font-size: 26px; font-weight: 600; line-height: 1.8; color: var(--black); border-left: 4px solid var(--red); padding-left: 24px; margin: 20px 0; }
+
+  /* Structure tree */
+  .tree { margin-top: 24px; }
+  .tree-row { display: flex; align-items: stretch; gap: 16px; margin-bottom: 16px; }
+  .tree-label {
+    min-width: 200px; padding: 16px 20px;
+    background: var(--dark); color: #fff;
+    font-weight: 700; font-size: 17px;
+    display: flex; align-items: center;
+    border-radius: 4px;
+  }
+  .tree-label.red-bg { background: var(--red); }
+  .tree-items { flex: 1; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .tree-item {
+    padding: 12px 18px;
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .slide-footer { position: absolute; bottom: 16px; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--gray); letter-spacing: 1px; border-top: 1px solid var(--border); padding-top: 10px; }
+
+  .nav-side { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 5px; }
+  .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(0,0,0,0.15); cursor: pointer; transition: all 0.3s; border: none; }
+  .nav-dot:hover, .nav-dot.active { background: var(--red); transform: scale(1.4); }
+
+  @media (max-width: 900px) {
+    .slide { padding: 32px 24px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .tree-row { flex-direction: column; }
+    .tree-label { min-width: auto; }
+    .nav-side { display: none; }
+    .slide-footer { left: 24px; right: 24px; }
+    h1 { font-size: 36px; } h2 { font-size: 30px; } h3 { font-size: 24px; }
+  }
+  @media print {
+    .slide { page-break-after: always; }
+    .nav-side { display: none; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav-side" id="nav"></nav>
+
+<!-- S1: TITLE -->
+<section class="slide bg-hero" id="s1">
+  <div style="max-width:850px;">
+    <img src="../logo.png" class="logo" alt="Strategists" style="margin-bottom:40px; filter: brightness(0) invert(1);">
+    <h1 style="font-size:48px; margin-bottom:20px;">タワマンの価値</h1>
+    <div class="divider" style="background:#fff; opacity:0.3;"></div>
+    <p style="font-size:22px; margin-top:16px; color:rgba(255,255,255,0.6);">ケース面接 解説資料</p>
+  </div>
+  <div class="slide-footer"><span>&copy; Strategists / Top Tier Inc.</span><span>CONFIDENTIAL</span></div>
+</section>
+
+<!-- S2: 前提の設定 -->
+<section class="slide bg-white" id="s2">
+  <div class="section-head">
+    <div class="red-bar"></div>
+    <div>
+      <div class="section-label">STEP 1</div>
+      <h3>前提の設定（例）</h3>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top:28px;">
+    <div class="card card-red">
+      <h4>タワマンの定義</h4>
+      <p style="font-size:18px;">東京都心部の<strong>駅直結</strong>・ショッピングモールなどもついたタワーマンション</p>
+    </div>
+    <div class="card card-red">
+      <h4>価値の定義</h4>
+      <p style="font-size:18px;">価値は<strong>機能的価値</strong>と<strong>情緒的価値</strong>によって構成されると定義</p>
+    </div>
+  </div>
+  <div class="box-gray" style="max-width:700px; margin-top:28px;">
+    <p style="font-size:17px;"><strong>ポイント：</strong>面接官との間で言葉の定義に違いがないか、最初に確認する</p>
+  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span></span></div>
+</section>
+
+<!-- S3: 誰が・どういう価値（初期） -->
+<section class="slide bg-light" id="s3">
+  <div class="section-head">
+    <div class="red-bar"></div>
+    <div>
+      <div class="section-label">STEP 2</div>
+      <h3>誰が価値を感じるのか（初期仮説）</h3>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top:24px;">
+    <div class="card" style="border-top:4px solid var(--red); padding:28px; text-align:center;">
+      <p class="sub" style="margin-bottom:8px;">誰が価値を感じるのか</p>
+      <h3 style="font-size:28px; margin-bottom:0;">タワマンに住む人</h3>
+    </div>
+    <div>
+      <div class="card card-red" style="margin-bottom:14px;">
+        <h4>機能的価値</h4>
+        <p>利便性、セキュリティ、眺望、共用施設、資産価値...</p>
+      </div>
+      <div class="card card-red">
+        <h4>情緒的価値</h4>
+        <p>ステータス、優越感、所有の満足感、ブランド...</p>
+      </div>
+    </div>
+  </div>
+  <div class="box-red" style="max-width:600px; margin-top:24px;">
+    <p style="font-size:17px;">まずはボトムアップに例示 → この後ステークホルダーを広げていく</p>
+  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span></span></div>
+</section>
+
+<!-- S4: ステークホルダー幅出し -->
+<section class="slide bg-white" id="s4">
+  <div class="section-head">
+    <div class="red-bar"></div>
+    <div>
+      <div class="section-label">STEP 3</div>
+      <h3>ステークホルダーを幅出しする</h3>
+    </div>
+  </div>
+  <p style="margin-bottom:20px;">「タワマンに住む人」以外にも、価値を感じる主体は複数存在する</p>
+  <div class="grid-3">
+    <div class="card" style="border-top:3px solid var(--red);">
+      <span class="tag tag-red">住む人以外</span>
+      <h4 style="margin-top:10px;">元々の地権者</h4>
+      <p>タワマン建設時に高額で土地を取得されるため、その分の<strong>金銭的価値</strong>を得られる</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--red);">
+      <span class="tag tag-red">周辺</span>
+      <h4 style="margin-top:10px;">周辺の商業施設</h4>
+      <p>たくさんの人が訪れるので<strong>経済効果</strong>がある</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--red);">
+      <span class="tag tag-red">行政</span>
+      <h4 style="margin-top:10px;">タワマンのある区</h4>
+      <p>莫大な税金が入るため、<strong>租税収入</strong>分の価値がある</p>
+    </div>
+  </div>
+  <div class="box-gray" style="max-width:700px; margin-top:20px;">
+    <p style="font-size:17px;"><strong>ポイント：</strong>ステークホルダーが他にも存在しないかを常に確認する</p>
+  </div>
+  <div class="slide-footer"><span>&copy; Strategists</span><span></span></div>
+</section>
+
+<!-- S5: 構造化 -->
+<section class="slide bg-light" id="s5">
+  <div class="section-head">
+    <div class="red-bar"></div>
+    <div>
+      <div class="section-label">STEP 4</div>
+      <h3>構造化する</h3>
+    </div>
+  </div>
+  <p style="margin-bottom:8px;">ボトムアップで出した要素を、最後にトップダウンで構造化する</p>
+
+  <div class="tree">
+    <!-- 大分類1 -->
+    <div class="tree-row">
+      <div class="tree-label red-bg">タワマン自体を作り<br>売ったことによる価値</div>
+      <div class="tree-items">
+        <div class="tree-item"><strong>タワマンを供給する人</strong><br><span class="sub">ゼネコン / デベロッパー / 元々の地権者</span></div>
+        <div class="tree-item"><strong>タワマンを需要する人</strong><br><span class="sub">住む人 / 投資する人</span></div>
+      </div>
+    </div>
+    <!-- 大分類2 -->
+    <div class="tree-row">
+      <div class="tree-label">富裕層が増えたことに<br>よる付随的な価値</div>
+      <div class="tree-items">
+        <div class="tree-item"><strong>周りの商業施設</strong><br><span class="sub">経済効果</span></div>
+        <div class="tree-item"><strong>タワマンのある区</strong><br><span class="sub">租税収入</span></div>
+        <div class="tree-item"><strong>タワマンを見る・訪れる人</strong><br><span class="sub">景観・体験価値</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer"><span>&copy; Strategists</span><span></span></div>
+</section>
+
+<!-- S6: 学びポイント -->
+<section class="slide bg-dark" id="s6">
+  <div class="section-head">
+    <div class="red-bar"></div>
+    <div>
+      <div class="section-label">TAKEAWAY</div>
+      <h2 style="color:#fff;">今回の学びポイント</h2>
+    </div>
+  </div>
+  <div style="margin-top:32px; max-width:800px; display:flex; flex-direction:column; gap:20px;">
+    <div style="display:flex; gap:20px; align-items:flex-start;">
+      <span style="font-family:'Noto Serif JP',serif; font-size:36px; font-weight:900; color:var(--red); opacity:0.4; line-height:1;">01</span>
+      <div>
+        <h4 style="font-size:22px; color:#fff;">言葉の定義を確認する</h4>
+        <p style="font-size:18px;">面接官との間で言葉の定義に違いがないか、最初に確認する</p>
+      </div>
+    </div>
+    <div style="display:flex; gap:20px; align-items:flex-start;">
+      <span style="font-family:'Noto Serif JP',serif; font-size:36px; font-weight:900; color:var(--red); opacity:0.4; line-height:1;">02</span>
+      <div>
+        <h4 style="font-size:22px; color:#fff;">ステークホルダーを幅出しする</h4>
+        <p style="font-size:18px;">他にも価値を感じる主体が存在しないかを確認する</p>
+      </div>
+    </div>
+    <div style="display:flex; gap:20px; align-items:flex-start;">
+      <span style="font-family:'Noto Serif JP',serif; font-size:36px; font-weight:900; color:var(--red); opacity:0.4; line-height:1;">03</span>
+      <div>
+        <h4 style="font-size:22px; color:#fff;">ボトムアップ → 構造化の流れ</h4>
+        <p style="font-size:18px;">網羅構造的な問題は、まずボトムアップに例示してみて、それを最後にトップダウンで構造化する</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><span>&copy; Strategists / Top Tier Inc.</span><span>CONFIDENTIAL</span></div>
+</section>
+
+<script>
+(function() {
+  const slides = document.querySelectorAll('.slide');
+  const nav = document.getElementById('nav');
+  slides.forEach((s, i) => {
+    const d = document.createElement('button');
+    d.className = 'nav-dot';
+    d.title = 'Slide ' + (i + 1);
+    d.addEventListener('click', () => s.scrollIntoView({ behavior: 'smooth' }));
+    nav.appendChild(d);
+  });
+  const dots = nav.querySelectorAll('.nav-dot');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { const idx = Array.from(slides).indexOf(e.target); dots.forEach((d, i) => d.classList.toggle('active', i === idx)); } });
+  }, { threshold: 0.5 });
+  slides.forEach(s => obs.observe(s));
+})();
+</script>
+</body>
+</html>
